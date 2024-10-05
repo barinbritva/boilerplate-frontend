@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		// Development specific
+		"removeComments": false,
+		// Checks
+		"noUnusedLocals": false,
+		"allowUnreachableCode": true
+	}
+}
