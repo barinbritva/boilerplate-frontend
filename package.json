@@ -2,7 +2,7 @@
 	"name": "frontend",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "env-cmd -f ../../.env node scripts/setup-env.js && concurrently \"cross-env NODE_ENV=development APP_BUILD=dev webpack serve --mode development --stats-children\" \"ngrok http --domain=champion-spaniel-slowly.ngrok-free.app 4000\"",
+		"dev": "env-cmd -f .env node scripts/setup-env.js && concurrently \"cross-env NODE_ENV=development APP_BUILD=dev webpack serve --mode development --stats-children\" \"ngrok http --domain=champion-spaniel-slowly.ngrok-free.app 4000\"",
 		"build": "cross-env NODE_ENV=production webpack --mode production",
 		"check-types": "tsc --noEmit",
 		"lint": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,yml}\""
@@ -32,5 +32,12 @@
 		"webpack": "^5.91.0",
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^5.0.4"
+	},
+	"peerDependencies": {
+		"typescript": "~5.6.3",
+		"env-cmd": "^10.1.0",
+		"cross-env": "^7.0.3",
+		"prettier": "^3.3.3",
+		"concurrently": "^9.0.1"
 	}
 }

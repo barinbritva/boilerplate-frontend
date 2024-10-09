@@ -12,7 +12,7 @@ export function createContext(
 	return {
 		configuration: config,
 		user: account,
-		defaultPageMeta: new Meta('Ads for Mini Apps'),
+		defaultPageMeta: new Meta('Boilerplate'),
 		routeBuilder: new RouteBuilder(),
 		services: container
 	};

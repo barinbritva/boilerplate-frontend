@@ -73,7 +73,7 @@ module.exports = {
 		historyApiFallback: true,
 		allowedHosts: 'all',
 		compress: true,
-		port: 4000,
+		port: 4005,
 		hot: true,
 		proxy: [
 			{

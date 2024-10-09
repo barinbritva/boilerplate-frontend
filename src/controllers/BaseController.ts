@@ -3,7 +3,6 @@ import {Meta} from '../entities/Page';
 import {AppContext} from '../interfaces/AppContext';
 import {ControllerResult} from '../interfaces/ControllerResult';
 import {CommonTemplateProps} from '../views/templates/CommonTemplate';
-import {MenuItem} from '../views/molecules/Menu';
 
 export interface ControllerContext extends AppContext, RouteContext {}
 
@@ -17,16 +16,8 @@ export abstract class BaseController {
 	}
 
 	public getBaseProps(): CommonTemplateProps {
-		const menuItems: MenuItem[] = [];
-
 		return {
 			account: this.context.user,
-			menuItems,
-			homeItem: {
-				icon: 'Megaphone',
-				label: 'Home',
-				handler: '/'
-			}
 		};
 	}
 

@@ -1,7 +1,8 @@
 const fs = require('fs');
 
 function setupEnv() {
-	const variables = ['TELEGRAM_BOT_HANDLE'];
+	// put variables names
+	const variables = [];
 
 	const lostVariables = variables.filter((variable) => {
 		return process.env[variable] == null;

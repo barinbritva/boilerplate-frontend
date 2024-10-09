@@ -17,7 +17,7 @@ import {loadAccount} from './loadAccount';
 export async function runApp(): Promise<void> {
 	const config = new Configuration();
 	const serviceContainer = createServiceContainer(config);
-	const account = await loadAccount(/* serviceContainer.restApi */);
+	const account = await loadAccount();
 	const context = createContext(config, serviceContainer, account);
 	const routeBuilder = new RouteBuilder();
 	const router = createRouter(context);

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 variables=(
-  TELEGRAM_BOT_HANDLE
+  # put variable names
 )
 
 fileContent="window.env = {"
