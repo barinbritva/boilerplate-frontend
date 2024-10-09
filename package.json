@@ -2,42 +2,37 @@
 	"name": "frontend",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "env-cmd -f .env node scripts/setup-env.js && concurrently \"cross-env NODE_ENV=development APP_BUILD=dev webpack serve --mode development --stats-children\" \"ngrok http --domain=champion-spaniel-slowly.ngrok-free.app 4000\"",
+		"dev": "env-cmd -f .env node scripts/setup-env.js && concurrently \"cross-env NODE_ENV=development APP_BUILD=dev webpack serve --mode development --stats-children\"",
 		"build": "cross-env NODE_ENV=production webpack --mode production",
 		"check-types": "tsc --noEmit",
 		"lint": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,yml}\""
 	},
 	"dependencies": {
+		"grommet": "^2.40.2",
 		"history": "^5.3.0",
-		"lucide-react": "^0.367.0",
 		"mobx": "^6.12.3",
 		"mobx-react-lite": "^4.0.7",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"styled-components": "^6.1.13",
 		"universal-router": "^9.2.0"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.74",
 		"@types/react-dom": "^18.2.23",
 		"@types/webpack": "^5.28.5",
-		"autoprefixer": "^10.4.19",
-		"css-loader": "^7.1.0",
-		"daisyui": "^4.10.1",
 		"html-webpack-plugin": "^5.6.0",
 		"mini-css-extract-plugin": "^2.8.1",
-		"postcss": "^8.4.38",
-		"postcss-loader": "^8.1.1",
-		"tailwindcss": "^3.4.3",
 		"ts-loader": "^9.5.1",
 		"webpack": "^5.91.0",
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^5.0.4"
 	},
 	"peerDependencies": {
-		"typescript": "~5.6.3",
-		"env-cmd": "^10.1.0",
+		"concurrently": "^9.0.1",
 		"cross-env": "^7.0.3",
+		"env-cmd": "^10.1.0",
 		"prettier": "^3.3.3",
-		"concurrently": "^9.0.1"
+		"typescript": "~5.6.3"
 	}
 }

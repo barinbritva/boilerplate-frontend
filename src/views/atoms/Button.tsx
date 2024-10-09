@@ -1,14 +1,13 @@
-import React, {ButtonHTMLAttributes} from 'react';
+import React from 'react';
+import {Button as BaseButton, ButtonExtendedProps as BaseButtonProps} from 'grommet';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	children?: React.ReactNode;
-	error?: boolean;
+export interface ButtonProps extends BaseButtonProps {
 }
 
-export const Button: React.FC<ButtonProps> = ({children, className, ...props}) => {
+export const Button: React.FC<ButtonProps> = ({children, ...props}) => {
 	return (
-		<button {...props} className={`btn w-full ${className}`}>
+		<BaseButton {...props}>
 			{children}
-		</button>
+		</BaseButton>
 	);
 };

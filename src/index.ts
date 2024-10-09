@@ -1,4 +1,3 @@
-import './styles.css';
 import {runApp} from './bootstrap/runApp';
 
 runApp().catch((error) => {

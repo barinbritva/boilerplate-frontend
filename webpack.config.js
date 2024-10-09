@@ -1,7 +1,6 @@
 const path = require('path');
 const {execSync} = require('child_process');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDevelopmentEnv = process.env.NODE_ENV === 'development';
 const isProductionEnv = !isDevelopmentEnv;
@@ -44,10 +43,6 @@ module.exports = {
 						}
 					}
 				]
-			},
-			{
-				test: /\.css$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
 			}
 		]
 	},
@@ -60,9 +55,6 @@ module.exports = {
 			templateParameters: {
 				buildVersion: buildVersion
 			}
-		}),
-		new MiniCssExtractPlugin({
-			filename: 'styles/index.css'
 		})
 	],
 	devServer: {
