@@ -1,0 +1,4 @@
+# 7 days in minutes
+minimumReleaseAge: 10080
+# Install exact versions, no ^ or ~ prefix
+savePrefix: ''
