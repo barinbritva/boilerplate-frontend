@@ -1,0 +1,22 @@
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"jsxSingleQuote": false,
+	"semi": true,
+	"bracketSpacing": false,
+	"printWidth": 120,
+	"proseWrap": "always",
+	"trailingComma": "all",
+	"arrowParens": "always",
+	"bracketSameLine": false,
+	"endOfLine": "lf",
+	"htmlWhitespaceSensitivity": "strict",
+	"overrides": [
+		{
+			"files": ["*.ts,*.tsx"],
+			"options": {
+				"parser": "typescript"
+			}
+		}
+	]
+}

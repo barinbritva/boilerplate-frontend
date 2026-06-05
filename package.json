@@ -16,7 +16,8 @@
 		"build:dev": "env-cmd -f .env vite build --mode development",
 		"build": "env-cmd -f .env vite build --mode production",
 		"check-types": "tsc --noEmit",
-		"lint": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,yml}\""
+		"lint": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,yml,yaml}\"",
+		"lint:fix": "pnpm lint --write"
 	},
 	"dependencies": {
 		"history": "5.3.0",
