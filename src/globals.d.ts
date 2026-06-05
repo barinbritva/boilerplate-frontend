@@ -5,9 +5,7 @@ interface Dict<T> {
 }
 
 declare global {
-	interface Window {
-		env?: Dict<string>;
-	}
+	var __APP_ENV__: Dict<string>;
 }
 
 declare module 'universal-router' {

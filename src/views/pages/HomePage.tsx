@@ -8,6 +8,6 @@ export interface HomePageProps extends  CommonPageProps {}
 export const HomePage: React.FC<HomePageProps> = ({templateProps}) => {
     return <CommonTemplate {...templateProps}>
         <Heading>Home</Heading>
-        <Button primary label="Click me" />
+        <Button>Click me</Button>
     </CommonTemplate>
 }

@@ -2,8 +2,8 @@ export class Configuration {
 	public readonly apiUrl: string = '/api';
 
 	constructor() {
-		if (window.env == null) {
-			throw new Error('Environment is not set.');
+		if (__APP_ENV__ == null) {
+			throw new Error('Environment variables are not set.');
 		}
 
 		// validate env here

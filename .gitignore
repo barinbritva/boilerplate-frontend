@@ -1,6 +1,3 @@
+dist
 node_modules
 .env
-
-public/scripts
-public/styles
-public/*.html
