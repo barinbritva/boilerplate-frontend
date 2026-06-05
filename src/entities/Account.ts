@@ -5,7 +5,7 @@ export class Account implements UserBase {
 		public readonly id: string,
 		public readonly username: string,
 		public readonly photoUrl: string,
-		public readonly isAdmin: boolean
+		public readonly isAdmin: boolean,
 	) {}
 
 	public isSignedIn(): boolean {

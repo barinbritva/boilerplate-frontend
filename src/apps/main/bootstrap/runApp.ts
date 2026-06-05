@@ -35,7 +35,7 @@ export async function runApp(): Promise<void> {
 
 		try {
 			const result = await router.resolve({
-				pathname: location.pathname
+				pathname: location.pathname,
 			});
 
 			if (result == null) {

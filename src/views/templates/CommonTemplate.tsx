@@ -10,10 +10,7 @@ export interface CommonPageProps {
 	templateProps: CommonTemplateProps;
 }
 
-export const CommonTemplate: React.FC<CommonTemplateProps> = ({
-	account,
-	children
-}) => {
+export const CommonTemplate: React.FC<CommonTemplateProps> = ({account, children}) => {
 	return (
 		<div>
 			<aside>{account.username}</aside>

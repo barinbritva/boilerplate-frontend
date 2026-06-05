@@ -12,17 +12,17 @@ export function createRouter(appContext: AppContext) {
 				path: Route.SignIn,
 				action: (context) => {
 					return new SignInController(context).handle();
-				}
+				},
 			},
 			{
 				path: Route.Root,
 				action: (context) => {
 					return new HomeController(context).handle();
-				}
-			}
+				},
+			},
 		],
 		{
-			context: appContext
-		}
+			context: appContext,
+		},
 	);
 }

@@ -4,6 +4,6 @@ import {RestApi} from '../../../services/RestApi';
 
 export function createServiceContainer(config: Configuration): ServiceContainer {
 	return {
-		restApi: new RestApi(config.apiUrl)
+		restApi: new RestApi(config.apiUrl),
 	};
 }

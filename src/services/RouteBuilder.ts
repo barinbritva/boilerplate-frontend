@@ -1,6 +1,6 @@
 export enum Route {
 	SignIn = '/sign-in',
-	Root = '/'
+	Root = '/',
 }
 
 export class RouteBuilder {

@@ -13,7 +13,7 @@ export interface PageSubscriber<D> {
 export class Meta {
 	constructor(
 		public readonly title: string,
-		public readonly favicon: string = '/favicon.ico'
+		public readonly favicon: string = '/favicon.ico',
 	) {}
 }
 
@@ -59,7 +59,7 @@ export class Page<D = any> extends View<D> {
 				return null;
 			},
 			{},
-			new Meta('')
+			new Meta(''),
 		);
 	}
 

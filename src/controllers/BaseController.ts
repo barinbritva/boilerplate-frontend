@@ -23,12 +23,8 @@ export abstract class BaseController {
 
 	protected buildPageMeta(title?: string | string[], favicon?: string): Meta {
 		const {defaultPageMeta} = this.context;
-		const titleParts =
-			typeof title === 'undefined' ? [] : typeof title === 'string' ? [title] : title;
+		const titleParts = typeof title === 'undefined' ? [] : typeof title === 'string' ? [title] : title;
 
-		return new Meta(
-			[...titleParts, defaultPageMeta.title].join(' • '),
-			favicon ?? defaultPageMeta.favicon
-		);
+		return new Meta([...titleParts, defaultPageMeta.title].join(' • '), favicon ?? defaultPageMeta.favicon);
 	}
 }

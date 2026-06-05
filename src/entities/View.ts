@@ -14,7 +14,7 @@ export class View<D = any> {
 	private readonly _viewSubscribers: ViewSubscriber<D>[] = [];
 	public constructor(
 		private _template: FC<D>,
-		private _data: D
+		private _data: D,
 	) {}
 
 	public get template(): FC<D> {

@@ -1,6 +1,6 @@
-import { Meta, Page } from '../entities/Page';
+import {Meta, Page} from '../entities/Page';
 import {ControllerResult} from '../interfaces/ControllerResult';
-import { HomePage } from '../views/pages/HomePage';
+import {HomePage} from '../views/pages/HomePage';
 import {AuthorizedZoneController} from './AuthorizedZoneController';
 
 export class HomeController extends AuthorizedZoneController {
