@@ -72,7 +72,7 @@ export async function runApp(): Promise<void> {
 				return;
 			}
 
-			// Sentry.captureException(error);
+			// Sentry.captureException(error)
 			console.error(error);
 
 			const errorController = new ErrorController(error);
