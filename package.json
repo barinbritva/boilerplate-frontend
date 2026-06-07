@@ -19,6 +19,9 @@
 		"lint:fix": "pnpm lint --write"
 	},
 	"dependencies": {
+		"@capacitor/android": "8.3.4",
+		"@capacitor/core": "8.3.4",
+		"@capacitor/ios": "8.3.4",
 		"history": "5.3.0",
 		"mobx": "6.12.3",
 		"mobx-react-lite": "4.0.7",
@@ -30,6 +33,7 @@
 		"vite-plugin-checker": "0.14.1"
 	},
 	"devDependencies": {
+		"@capacitor/cli": "8.3.4",
 		"@types/react": "18.2.74",
 		"@types/react-dom": "18.2.23",
 		"concurrently": "9.0.1",
