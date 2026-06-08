@@ -1,3 +1,6 @@
 dist
 node_modules
 .env
+# Ignore lock files to avoid conflicts between package managers
+package-lock.json
+yarn.lock
