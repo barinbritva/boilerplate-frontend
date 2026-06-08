@@ -16,7 +16,8 @@
 		"build": "env-cmd -f .env vite build --mode production",
 		"check-types": "tsc --noEmit",
 		"lint": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,yml,yaml}\"",
-		"lint:fix": "pnpm lint --write"
+		"lint:fix": "pnpm lint --write",
+		"cap": "cap"
 	},
 	"dependencies": {
 		"@capacitor/android": "8.3.4",
