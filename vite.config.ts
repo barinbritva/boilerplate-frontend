@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
+import {env} from './env';
 
 // Required env variables
 const APP_ENV_KEYS: string[] = [];
@@ -27,11 +28,11 @@ function transformHtmlPlugin() {
 		name: 'html-transform',
 		transformIndexHtml(html: string) {
 			return html;
-		}
+		},
 	};
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({mode}) => {
 	const buildEntry = indexEntry;
 	const appEnv = APP_ENV_KEYS.reduce<Record<string, string>>((accumulator, key) => {
 		accumulator[key] = resolveAppEnvValue(key);
@@ -43,7 +44,7 @@ export default defineConfig(({ mode }) => {
 	return {
 		base: './',
 		define: {
-			__APP_ENV__: JSON.stringify(appEnv)
+			__APP_ENV__: JSON.stringify(appEnv),
 		},
 		build: {
 			watch: mode === 'development' ? {} : null,
@@ -58,15 +59,22 @@ export default defineConfig(({ mode }) => {
 					codeSplitting: false,
 					entryFileNames: `scripts/${buildEntry}.js`,
 					chunkFileNames: 'scripts/[name].js',
-					assetFileNames: 'scripts/[name].[ext]'
-				}
-			}
+					assetFileNames: 'scripts/[name].[ext]',
+				},
+			},
 		},
 		plugins: [
 			checker({
 				typescript: true,
 			}),
-			transformHtmlPlugin()
-		]
+			transformHtmlPlugin(),
+		],
+		server: {
+			// host 0.0.0.0 runs server on local IP address along with localhost, f.e. http://192.168.1.43:5173/
+			// it allows to test app on different devices in the same network
+			host: '0.0.0.0',
+			port: env.devServerPort,
+			strictPort: true,
+		},
 	};
 });
