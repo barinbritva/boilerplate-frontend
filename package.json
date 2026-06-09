@@ -14,10 +14,10 @@
 		"dev": "env-cmd -f .env vite serve --mode development",
 		"build:dev": "env-cmd -f .env vite build --mode development",
 		"build": "env-cmd -f .env vite build --mode production",
+		"cap": "env-cmd -f .env cap",
 		"check-types": "tsc --noEmit",
 		"lint": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,yml,yaml}\"",
-		"lint:fix": "pnpm lint --write",
-		"cap": "cap"
+		"lint:fix": "pnpm lint --write"
 	},
 	"dependencies": {
 		"@capacitor/android": "8.3.4",
