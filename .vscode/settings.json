@@ -1,7 +1,21 @@
 {
 	"js/ts.tsdk.path": "./node_modules/typescript/lib",
 	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+
 	"editor.formatOnPaste": true,
-	"editor.formatOnSave": true
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// explicit overrides is required otherwise VSCode uses eslint as well
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 }
