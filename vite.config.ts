@@ -33,7 +33,9 @@ function transformHtmlPlugin() {
 }
 
 export default defineConfig(({mode}) => {
+	const isDev = mode === 'development';
 	const buildEntry = indexEntry;
+	const tsconfigPath = isDev ? './tsconfig.dev.json' : './tsconfig.json';
 	const appEnv = APP_ENV_KEYS.reduce<Record<string, string>>((accumulator, key) => {
 		accumulator[key] = resolveAppEnvValue(key);
 		return accumulator;
@@ -65,7 +67,9 @@ export default defineConfig(({mode}) => {
 		},
 		plugins: [
 			checker({
-				typescript: true,
+				typescript: {
+					tsconfigPath,
+				},
 			}),
 			transformHtmlPlugin(),
 		],
