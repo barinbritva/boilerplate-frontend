@@ -4,7 +4,8 @@ The motivation is to separate a logic, data and view layers. React (other UI lib
 
 # Benefits
 
-- App entry point not related to UI and can perform any logic: building dependencies, making redirects, data preloading, caching views, etc.
+- App entry point not related to UI and can perform any logic: building dependencies, making redirects, data preloading,
+  caching views, etc.
 - Logic and data layer can be tested independently from UI
 - UI layer can be tested independently from logic and data
 - Data storage can be replaced with any other storage. Here it is MobX in the example
@@ -16,3 +17,9 @@ The motivation is to separate a logic, data and view layers. React (other UI lib
 - UI components delegate all the logic calls to prop handlers or models methods
 - UI components don't load data and don't do side effects
 - React hooks maybe used only for UI specific logic
+
+# Capacitor
+
+```
+adb reverse tcp:5173 tcp:5173
+```
