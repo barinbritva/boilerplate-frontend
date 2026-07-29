@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface EmptyTemplateProps {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 }
 
 export interface EmptyPageProps {

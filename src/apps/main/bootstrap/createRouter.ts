@@ -10,14 +10,22 @@ export function createRouter(appContext: AppContext) {
 		[
 			{
 				path: Route.SignIn,
-				action: (context) => {
-					return new SignInController(context).handle();
+				action: async (context) => {
+					const {routeBuilder} = context;
+					const {authenticator} = context.services;
+					authenticator.assertNoAccount();
+
+					return new SignInController(context, authenticator, routeBuilder).handle();
 				},
 			},
 			{
 				path: Route.Root,
-				action: (context) => {
-					return new HomeController(context).handle();
+				action: async (context) => {
+					const {routeBuilder} = context;
+					const {authenticator} = context.services;
+					const account = authenticator.getAccountOrThrow();
+
+					return new HomeController(context, authenticator, routeBuilder, account).handle();
 				},
 			},
 		],

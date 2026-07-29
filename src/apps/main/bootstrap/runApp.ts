@@ -12,17 +12,19 @@ import {RouteBuilder} from '../../../services/RouteBuilder';
 import {go, history} from '../../../services/navigation';
 import {createContext} from './createContext';
 import {createServiceContainer} from './createServiceContainer';
-import {loadAccount} from './loadAccount';
 
 export async function runApp(): Promise<void> {
 	const config = new Configuration();
 	const serviceContainer = createServiceContainer(config);
-	const account = await loadAccount();
-	const context = createContext(config, serviceContainer, account);
+	const context = createContext(config, serviceContainer);
 	const routeBuilder = new RouteBuilder();
 	const router = createRouter(context);
 	const dom = new DomManager();
 	const pageMetaManager = new PageMetaManager();
+
+	// This authentication is just for demonstration purposes
+	const authentication = serviceContainer.authenticator;
+	await authentication.loadAccount();
 
 	let unsubscribePageUpdates: UnsubscribePage | null = null;
 	async function navigate(location: Pick<Location, 'pathname'>) {

@@ -13,7 +13,7 @@ export interface CommonPageProps {
 export const CommonTemplate: React.FC<CommonTemplateProps> = ({account, children}) => {
 	return (
 		<div>
-			<aside>{account.username}</aside>
+			<aside>user #{account.id}</aside>
 			<main>{children}</main>
 		</div>
 	);
