@@ -1,32 +1,23 @@
 import React from 'react';
-import {createRoot} from 'react-dom/client';
+import {createRoot, Root} from 'react-dom/client';
 import {View} from '../entities/View';
 
 export class DomManager {
-	private readonly appElement: HTMLDivElement;
+	private readonly root: Root;
 
-	constructor() {
-		this.appElement = this.addContainerToBody();
+	constructor(container: HTMLElement) {
+		this.root = createRoot(container);
 	}
 
-	public renderPage(view: View): void {
-		const content = (
-			<>
+	public render(view: View): void {
+		this.root.render(
+			<React.StrictMode>
 				<view.template {...view.data} />
-			</>
+			</React.StrictMode>,
 		);
-
-		const root = createRoot(this.appElement);
-		root.unmount();
-		this.render(content, this.appElement);
 	}
 
-	public render(children: ReturnType<React.FC>, domElement: Element): void {
-		const root = createRoot(domElement);
-		root.render(<React.StrictMode>{children}</React.StrictMode>);
-	}
-
-	private addContainerToBody(): HTMLDivElement {
-		return document.body.appendChild(document.createElement('div'));
+	public unmount(): void {
+		this.root.unmount();
 	}
 }

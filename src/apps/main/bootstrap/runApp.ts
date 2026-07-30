@@ -10,10 +10,13 @@ import {createServiceContainer} from './createServiceContainer';
 import {ControllerResult} from '../../../interfaces/ControllerResult';
 
 export async function runApp(): Promise<void> {
+	const appContainer = document.createElement('div');
+	document.body.appendChild(appContainer);
+
 	const config = new Configuration();
 	const serviceContainer = createServiceContainer(config);
 	const router = createRouter(serviceContainer);
-	const dom = new DomManager();
+	const dom = new DomManager(appContainer);
 	const pageMetaManager = new PageMetaManager();
 
 	const {authenticator, navigationErrorResolver} = serviceContainer;
@@ -61,12 +64,12 @@ export async function runApp(): Promise<void> {
 				}
 
 				if (update.view != null) {
-					dom.renderPage(update.view);
+					dom.render(update.view);
 				}
 			});
 		}
 
-		dom.renderPage(result);
+		dom.render(result);
 	}
 
 	history.listen(({location}) => {
