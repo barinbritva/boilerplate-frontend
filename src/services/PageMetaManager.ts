@@ -1,7 +1,7 @@
-import {Meta} from '../entities/Page';
+import {PageMeta} from '../entities/Page';
 
 export class PageMetaManager {
-	public apply(data: Meta) {
+	public apply(data: PageMeta) {
 		document.title = data.title;
 	}
 }

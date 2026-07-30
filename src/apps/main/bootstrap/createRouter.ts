@@ -11,21 +11,19 @@ export function createRouter(appContext: AppContext) {
 			{
 				path: Route.SignIn,
 				action: async (context) => {
-					const {routeBuilder} = context;
-					const {authenticator} = context.services;
+					const {authenticator, routeBuilder, pageMetaBuilder} = context.services;
 					authenticator.assertNoAccount();
 
-					return new SignInController(context, authenticator, routeBuilder).handle();
+					return new SignInController(authenticator, routeBuilder, pageMetaBuilder).handle();
 				},
 			},
 			{
 				path: Route.Root,
 				action: async (context) => {
-					const {routeBuilder} = context;
-					const {authenticator} = context.services;
+					const {authenticator, routeBuilder, pageMetaBuilder} = context.services;
 					const account = authenticator.getAccountOrThrow();
 
-					return new HomeController(context, authenticator, routeBuilder, account).handle();
+					return new HomeController(authenticator, routeBuilder, pageMetaBuilder, account).handle();
 				},
 			},
 		],

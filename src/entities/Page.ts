@@ -7,10 +7,10 @@ export interface UnsubscribePage {
 }
 
 export interface PageSubscriber<D> {
-	(update: {meta?: Meta; view?: View<D>}): void;
+	(update: {meta?: PageMeta; view?: View<D>}): void;
 }
 
-export class Meta {
+export class PageMeta {
 	constructor(
 		public readonly title: string,
 		public readonly favicon: string = '/favicon.ico',
@@ -19,24 +19,24 @@ export class Meta {
 
 // todo #backlog 🟡 forbid non {}
 export class Page<D = any> extends View<D> {
-	private _meta: Meta;
+	private _meta: PageMeta;
 	private readonly _metaSubscribers: PageSubscriber<D>[] = [];
 
-	public constructor(template: FC<D>, data: D, meta: Meta) {
+	public constructor(template: FC<D>, data: D, meta: PageMeta) {
 		super(template, data);
 		this._meta = meta;
 	}
 
-	public get meta(): Meta {
+	public get meta(): PageMeta {
 		return this._meta;
 	}
 
-	public updateMeta(value: Meta) {
+	public updateMeta(value: PageMeta) {
 		this._meta = value;
 		this.notifyMetaSubscribers();
 	}
 
-	public updatePage(template: FC<D>, data: D, meta: Meta): void {
+	public updatePage(template: FC<D>, data: D, meta: PageMeta): void {
 		this.updateView(template, data);
 		this.updateMeta(meta);
 	}
@@ -59,7 +59,7 @@ export class Page<D = any> extends View<D> {
 				return null;
 			},
 			{},
-			new Meta(''),
+			new PageMeta(''),
 		);
 	}
 

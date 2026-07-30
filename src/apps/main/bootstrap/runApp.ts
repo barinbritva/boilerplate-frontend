@@ -16,7 +16,7 @@ import {createServiceContainer} from './createServiceContainer';
 export async function runApp(): Promise<void> {
 	const config = new Configuration();
 	const serviceContainer = createServiceContainer(config);
-	const context = createContext(config, serviceContainer);
+	const context = createContext(serviceContainer);
 	const routeBuilder = new RouteBuilder();
 	const router = createRouter(context);
 	const dom = new DomManager();

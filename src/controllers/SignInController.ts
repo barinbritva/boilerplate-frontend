@@ -1,23 +1,24 @@
-import {Meta, Page} from '../entities/Page';
+import {Page} from '../entities/Page';
+import {Controller} from '../interfaces/Controller';
 import {ControllerResult} from '../interfaces/ControllerResult';
 import {Authenticator} from '../services/Authenticator';
 import {go} from '../services/navigation';
+import {PageMetaBuilder} from '../services/PageMetaBuilder';
 import {RouteBuilder} from '../services/RouteBuilder';
 import {SignInPage} from '../views/pages/SignInPage';
-import {BaseController, ControllerContext} from './BaseController';
 
-export class SignInController extends BaseController {
+export class SignInController implements Controller {
 	private readonly authenticator: Authenticator;
-	private readonly routes: RouteBuilder;
+	private readonly routeBuilder: RouteBuilder;
+	private readonly pageMetaBuilder: PageMetaBuilder;
 
-	constructor(context: ControllerContext, authenticator: Authenticator, routes: RouteBuilder) {
-		super(context);
-
+	constructor(authenticator: Authenticator, routeBuilder: RouteBuilder, pageMetaBuilder: PageMetaBuilder) {
 		this.authenticator = authenticator;
-		this.routes = routes;
+		this.routeBuilder = routeBuilder;
+		this.pageMetaBuilder = pageMetaBuilder;
 	}
 
-	public override handle(): Promise<ControllerResult> | ControllerResult {
+	public handle(): Promise<ControllerResult> | ControllerResult {
 		return new Page(
 			SignInPage,
 			{
@@ -26,12 +27,12 @@ export class SignInController extends BaseController {
 					this.handleSignIn();
 				},
 			},
-			new Meta('Sign In'),
+			this.pageMetaBuilder.build({title: 'Sign In'}),
 		);
 	}
 
 	private async handleSignIn(): Promise<void> {
 		await this.authenticator.signIn();
-		go(this.routes.root());
+		go(this.routeBuilder.root());
 	}
 }

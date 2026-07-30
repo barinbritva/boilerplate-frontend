@@ -1,26 +1,32 @@
 import {Account} from '../entities/Account';
-import {Meta, Page} from '../entities/Page';
+import {Page} from '../entities/Page';
+import {Controller} from '../interfaces/Controller';
 import {ControllerResult} from '../interfaces/ControllerResult';
 import {Authenticator} from '../services/Authenticator';
 import {go} from '../services/navigation';
+import {PageMetaBuilder} from '../services/PageMetaBuilder';
 import {RouteBuilder} from '../services/RouteBuilder';
 import {HomePage} from '../views/pages/HomePage';
-import {BaseController, ControllerContext} from './BaseController';
 
-export class HomeController extends BaseController {
+export class HomeController implements Controller {
 	private readonly authenticator: Authenticator;
-	private readonly routes: RouteBuilder;
+	private readonly routeBuilder: RouteBuilder;
+	private readonly pageMetaBuilder: PageMetaBuilder;
 	private readonly account: Account;
 
-	constructor(context: ControllerContext, authenticator: Authenticator, routes: RouteBuilder, account: Account) {
-		super(context);
-
+	constructor(
+		authenticator: Authenticator,
+		routeBuilder: RouteBuilder,
+		pageMetaBuilder: PageMetaBuilder,
+		account: Account,
+	) {
 		this.authenticator = authenticator;
-		this.routes = routes;
+		this.routeBuilder = routeBuilder;
+		this.pageMetaBuilder = pageMetaBuilder;
 		this.account = account;
 	}
 
-	public override handle(): Promise<ControllerResult> | ControllerResult {
+	public handle(): Promise<ControllerResult> | ControllerResult {
 		return new Page(
 			HomePage,
 			{
@@ -29,12 +35,12 @@ export class HomeController extends BaseController {
 					this.handleSignOut();
 				},
 			},
-			new Meta('Home'),
+			this.pageMetaBuilder.build({title: 'Home'}),
 		);
 	}
 
 	private async handleSignOut() {
 		await this.authenticator.signOut();
-		go(this.routes.signIn());
+		go(this.routeBuilder.signIn());
 	}
 }
