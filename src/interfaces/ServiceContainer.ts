@@ -13,7 +13,3 @@ export interface ServiceContainer {
 	pageMetaBuilder: PageMetaBuilder;
 	routeBuilder: RouteBuilder;
 }
-
-export interface AppContext {
-	services: ServiceContainer;
-}

@@ -8,23 +8,20 @@ import {UnauthorizedError} from '../../../errors/UnauthorizedError';
 import {Configuration} from '../../../services/Configuration';
 import {DomManager} from '../../../services/DomManager';
 import {PageMetaManager} from '../../../services/PageMetaManager';
-import {RouteBuilder} from '../../../services/RouteBuilder';
 import {go, history} from '../../../services/navigation';
-import {createContext} from './createContext';
 import {createServiceContainer} from './createServiceContainer';
 
 export async function runApp(): Promise<void> {
 	const config = new Configuration();
 	const serviceContainer = createServiceContainer(config);
-	const context = createContext(serviceContainer);
-	const routeBuilder = new RouteBuilder();
-	const router = createRouter(context);
+	const router = createRouter(serviceContainer);
 	const dom = new DomManager();
 	const pageMetaManager = new PageMetaManager();
 
+	const {authenticator, routeBuilder} = serviceContainer;
+
 	// This authentication is just for demonstration purposes
-	const authentication = serviceContainer.authenticator;
-	await authentication.loadAccount();
+	await authenticator.loadAccount();
 
 	let unsubscribePageUpdates: UnsubscribePage | null = null;
 	async function navigate(location: Pick<Location, 'pathname'>) {
