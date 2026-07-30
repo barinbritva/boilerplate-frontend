@@ -1,6 +1,7 @@
 import {PageMeta} from '../entities/Page';
 import {Authenticator} from '../services/Authenticator';
 import {Configuration} from '../services/Configuration';
+import {NavigationErrorResolver} from '../services/NavigationErrorResolver';
 import {PageMetaBuilder} from '../services/PageMetaBuilder';
 import {RestApi} from '../services/RestApi';
 import {RouteBuilder} from '../services/RouteBuilder';
@@ -12,4 +13,5 @@ export interface ServiceContainer {
 	defaultPageMeta: PageMeta;
 	pageMetaBuilder: PageMetaBuilder;
 	routeBuilder: RouteBuilder;
+	navigationErrorResolver: NavigationErrorResolver;
 }

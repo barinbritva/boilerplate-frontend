@@ -1,15 +1,13 @@
 import {createRouter} from './createRouter';
-import {ErrorController} from '../../../controllers/ErrorController';
 import {Page, UnsubscribePage} from '../../../entities/Page';
 import {Redirect} from '../../../entities/Redirect';
-import {AlreadyAuthorizedError} from '../../../errors/AlreadyAuthorizedError';
 import {NotFoundError} from '../../../errors/NotFoundError';
-import {UnauthorizedError} from '../../../errors/UnauthorizedError';
 import {Configuration} from '../../../services/Configuration';
 import {DomManager} from '../../../services/DomManager';
 import {PageMetaManager} from '../../../services/PageMetaManager';
 import {go, history} from '../../../services/navigation';
 import {createServiceContainer} from './createServiceContainer';
+import {ControllerResult} from '../../../interfaces/ControllerResult';
 
 export async function runApp(): Promise<void> {
 	const config = new Configuration();
@@ -18,68 +16,57 @@ export async function runApp(): Promise<void> {
 	const dom = new DomManager();
 	const pageMetaManager = new PageMetaManager();
 
-	const {authenticator, routeBuilder} = serviceContainer;
+	const {authenticator, navigationErrorResolver} = serviceContainer;
 
 	// This authentication is just for demonstration purposes
 	await authenticator.loadAccount();
 
 	let unsubscribePageUpdates: UnsubscribePage | null = null;
 	async function navigate(location: Pick<Location, 'pathname'>) {
-		const routes = routeBuilder;
-
 		if (unsubscribePageUpdates != null) {
 			unsubscribePageUpdates();
 			unsubscribePageUpdates = null;
 		}
 
+		let result: ControllerResult;
 		try {
-			const result = await router.resolve({
+			const nullableResult = await router.resolve({
 				pathname: location.pathname,
 			});
 
-			if (result == null) {
+			if (nullableResult == null) {
 				throw new NotFoundError();
 			}
 
-			if (result instanceof Redirect) {
-				go(result.redirectTo);
-				return;
-			}
-
-			if (result instanceof Page) {
-				pageMetaManager.apply(result.meta);
-				unsubscribePageUpdates = result.subscribePageChange((update) => {
-					if (update.meta != null) {
-						pageMetaManager.apply(update.meta);
-					}
-
-					if (update.view != null) {
-						dom.renderPage(update.view);
-					}
-				});
-			}
-
-			dom.renderPage(result);
+			result = nullableResult;
 		} catch (error) {
-			if (error instanceof UnauthorizedError) {
-				go(routes.signIn());
-				return;
+			result = navigationErrorResolver.resolve(error);
+
+			if (!(result instanceof Redirect)) {
+				// Sentry.captureException(error)
+				console.error(error);
 			}
-
-			if (error instanceof AlreadyAuthorizedError) {
-				go(routes.root());
-				return;
-			}
-
-			// Sentry.captureException(error)
-			console.error(error);
-
-			const errorController = new ErrorController(error);
-			const result = errorController.handle();
-
-			dom.renderPage(result);
-		} finally {
 		}
+
+		if (result instanceof Redirect) {
+			go(result.redirectTo);
+			return;
+		}
+
+		if (result instanceof Page) {
+			pageMetaManager.apply(result.meta);
+			unsubscribePageUpdates = result.subscribePageChange((update) => {
+				if (update.meta != null) {
+					pageMetaManager.apply(update.meta);
+				}
+
+				if (update.view != null) {
+					dom.renderPage(update.view);
+				}
+			});
+		}
+
+		dom.renderPage(result);
 	}
 
 	history.listen(({location}) => {
