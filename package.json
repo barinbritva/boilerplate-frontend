@@ -11,6 +11,7 @@
 		"pnpm": "11.5.2"
 	},
 	"scripts": {
+		"prepare": "lefthook install",
 		"dev": "env-cmd -f .env vite serve --mode development",
 		"build:dev": "env-cmd -f .env vite build --mode development",
 		"build": "env-cmd -f .env vite build --mode production",
