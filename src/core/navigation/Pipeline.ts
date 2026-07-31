@@ -1,4 +1,4 @@
-import {ArrayUtils} from './ArrayUtils';
+import {ArrayUtils} from '../utils/ArrayUtils';
 
 export type Next = () => Promise<void> | void;
 

@@ -1,5 +1,5 @@
 import {BrowserHistory, createBrowserHistory, Location} from 'history';
-import {Middleware, Pipeline} from '../utils/Pipeline';
+import {Middleware, Pipeline} from './Pipeline';
 
 export type {Location};
 

@@ -1,13 +1,13 @@
-import {AccountModel} from '../authentication/AccountModel';
-import {Page} from '../../core/presentation/Page';
-import {Controller} from '../../core/routing/Controller';
-import {ControllerResult} from '../../core/routing/ControllerResult';
-import {Authenticator} from '../authentication/Authenticator';
-import {BrowserNavigation} from '../../core/navigation/BrowserNavigation';
-import {PageMetaBuilder} from '../../core/presentation/PageMetaBuilder';
-import {RouteBuilder} from '../common/services/RouteBuilder';
-import {HomePage} from './HomePage';
-import {ReactView} from '../../core/presentation/adapters/react/ReactView';
+import {AccountModel} from '../../authentication/session/AccountModel';
+import {Page} from '../../../core/presentation/Page';
+import {Controller} from '../../../core/routing/Controller';
+import {ControllerResult} from '../../../core/routing/ControllerResult';
+import {Authenticator} from '../../authentication/session/Authenticator';
+import {BrowserNavigation} from '../../../core/navigation/BrowserNavigation';
+import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
+import {RouteBuilder} from '../../../bootstrap/router/RouteBuilder';
+import {HomePage} from './ui/HomePage';
+import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
 
 export class HomeController implements Controller {
 	private readonly authenticator: Authenticator;

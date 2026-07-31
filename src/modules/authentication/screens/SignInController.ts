@@ -1,12 +1,12 @@
-import {Page} from '../../core/presentation/Page';
-import {Controller} from '../../core/routing/Controller';
-import {ControllerResult} from '../../core/routing/ControllerResult';
-import {Authenticator} from './Authenticator';
-import {BrowserNavigation} from '../../core/navigation/BrowserNavigation';
-import {PageMetaBuilder} from '../../core/presentation/PageMetaBuilder';
-import {RouteBuilder} from '../common/services/RouteBuilder';
-import {SignInPage} from './SignInPage';
-import {ReactView} from '../../core/presentation/adapters/react/ReactView';
+import {Page} from '../../../core/presentation/Page';
+import {Controller} from '../../../core/routing/Controller';
+import {ControllerResult} from '../../../core/routing/ControllerResult';
+import {Authenticator} from '../session/Authenticator';
+import {BrowserNavigation} from '../../../core/navigation/BrowserNavigation';
+import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
+import {RouteBuilder} from '../../../bootstrap/router/RouteBuilder';
+import {SignInPage} from './ui/SignInPage';
+import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
 
 export class SignInController implements Controller {
 	private readonly authenticator: Authenticator;

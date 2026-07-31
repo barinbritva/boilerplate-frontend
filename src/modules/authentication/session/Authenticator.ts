@@ -1,6 +1,6 @@
 import {AccountModel} from './AccountModel';
+import {UnauthorizedError} from '../../../core/http/errors/UnauthorizedError';
 import {AlreadyAuthorizedError} from './errors/AlreadyAuthorizedError';
-import {UnauthorizedError} from '../../core/http/errors/UnauthorizedError';
 
 /**
  * This logic needs to be implemented in real applications
