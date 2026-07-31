@@ -5,8 +5,8 @@ import {Authenticator} from '../session/Authenticator';
 import {BrowserNavigation} from '../../../core/navigation/BrowserNavigation';
 import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '../../../bootstrap/router/RouteBuilder';
-import {SignInPage} from './ui/SignInPage';
-import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
+import {View} from '../../../core/presentation/View';
+import {SignInPage} from './ui/pages/SignInPage';
 
 export class SignInController implements Controller {
 	private readonly authenticator: Authenticator;
@@ -28,7 +28,7 @@ export class SignInController implements Controller {
 
 	public handle(): Promise<ControllerResult> | ControllerResult {
 		return new Page(
-			new ReactView(SignInPage, {
+			new View(SignInPage, {
 				templateProps: {},
 				onSignIn: () => {
 					this.handleSignIn();

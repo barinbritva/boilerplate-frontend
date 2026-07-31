@@ -6,8 +6,8 @@ import {Authenticator} from '../../authentication/session/Authenticator';
 import {BrowserNavigation} from '../../../core/navigation/BrowserNavigation';
 import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '../../../bootstrap/router/RouteBuilder';
-import {HomePage} from './ui/HomePage';
-import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
+import {HomePage} from './ui/pages/HomePage';
+import {View} from '../../../core/presentation/View';
 
 export class HomeController implements Controller {
 	private readonly authenticator: Authenticator;
@@ -32,7 +32,7 @@ export class HomeController implements Controller {
 
 	public handle(): Promise<ControllerResult> | ControllerResult {
 		return new Page(
-			new ReactView(HomePage, {
+			new View(HomePage, {
 				templateProps: {account: this.account},
 				onSignOut: () => {
 					this.handleSignOut();

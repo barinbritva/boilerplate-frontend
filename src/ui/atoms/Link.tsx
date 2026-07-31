@@ -1,4 +1,4 @@
-import React, {type MouseEvent} from 'react';
+import React, {ComponentType, type MouseEvent} from 'react';
 import {A, AProps} from './A';
 
 function isExternalLink(link: string): boolean {
@@ -10,7 +10,7 @@ function go(link: string): void {
 	console.log(`Navigating to ${link}`);
 }
 
-export const Link: React.FC<AProps> = (props) => {
+export const Link: ComponentType<AProps> = (props) => {
 	function handleNav(event: MouseEvent<HTMLAnchorElement>): void {
 		const href = props.href ?? '';
 		const onClick = props.onClick;

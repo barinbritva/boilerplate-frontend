@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRoot, Root} from 'react-dom/client';
-import {ReactView} from './ReactView';
+import {View} from './View';
 
 export class ReactRenderer {
 	private readonly root: Root;
@@ -9,7 +9,7 @@ export class ReactRenderer {
 		this.root = createRoot(container);
 	}
 
-	public render(view: ReactView): void {
+	public render(view: View): void {
 		this.root.render(
 			<React.StrictMode>
 				<view.template {...view.data} />

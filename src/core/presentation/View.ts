@@ -1,22 +1,24 @@
+import {ComponentType} from 'react';
 import {ArrayUtils} from '../utils/ArrayUtils';
 
 export interface UnsubscribeView {
 	(): void;
 }
 
-export interface ViewSubscriber<Template, Data> {
-	(view: View<Template, Data>): void;
+export interface ViewSubscriber<Data> {
+	(view: View<Data>): void;
 }
 
-export class View<Template = unknown, Data = unknown> {
-	private readonly viewSubscribers: ViewSubscriber<Template, Data>[] = [];
+// todo #backlog 🟡 forbid non {}
+export class View<Data = {}> {
+	private readonly viewSubscribers: ViewSubscriber<Data>[] = [];
 
 	public constructor(
-		private _template: Template,
+		private _template: ComponentType<Data>,
 		private _data: Data,
 	) {}
 
-	public get template(): Template {
+	public get template(): ComponentType<Data> {
 		return this._template;
 	}
 
@@ -24,14 +26,14 @@ export class View<Template = unknown, Data = unknown> {
 		return this._data;
 	}
 
-	public updateView(template: Template, data: Data): void {
+	public updateView(template: ComponentType<Data>, data: Data): void {
 		this._template = template;
 		this._data = data;
 
 		this.notifyViewSubscribers();
 	}
 
-	subscribeViewChange(subscriber: ViewSubscriber<Template, Data>): UnsubscribeView {
+	subscribeViewChange(subscriber: ViewSubscriber<Data>): UnsubscribeView {
 		this.viewSubscribers.push(subscriber);
 
 		return () => {

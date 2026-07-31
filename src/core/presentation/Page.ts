@@ -6,22 +6,22 @@ export interface UnsubscribePage {
 	(): void;
 }
 
-export interface PageSubscriber<ViewType extends View = View> {
-	(update: {meta?: PageMeta; view?: ViewType}): void;
+export interface PageSubscriber<Data = {}> {
+	(update: {meta?: PageMeta; view?: Data}): void;
 }
 
 // todo #backlog 🟡 forbid non {}
-export class Page<ViewType extends View = View> {
-	private _view: ViewType;
+export class Page<Data = {}> {
+	private _view: View<Data>;
 	private _meta: PageMeta;
-	private readonly _metaSubscribers: PageSubscriber<ViewType>[] = [];
+	private readonly _metaSubscribers: PageSubscriber<View<Data>>[] = [];
 
-	public constructor(view: ViewType, meta: PageMeta) {
+	public constructor(view: View<Data>, meta: PageMeta) {
 		this._view = view;
 		this._meta = meta;
 	}
 
-	public get view(): ViewType {
+	public get view(): View<Data> {
 		return this._view;
 	}
 
@@ -34,12 +34,12 @@ export class Page<ViewType extends View = View> {
 		this.notifyMetaSubscribers();
 	}
 
-	public updatePage(view: ViewType, meta: PageMeta): void {
+	public updatePage(view: View<Data>, meta: PageMeta): void {
 		this._view.updateView(view.template, view.data);
 		this.updateMeta(meta);
 	}
 
-	public subscribePageChange(subscriber: PageSubscriber<ViewType>): UnsubscribePage {
+	public subscribePageChange(subscriber: PageSubscriber<View<Data>>): UnsubscribePage {
 		const unsubscribeView = this._view.subscribeViewChange(() => {
 			subscriber({view: this._view});
 		});

@@ -1,7 +1,7 @@
 import React, {ComponentType} from 'react';
-import {Heading} from '../../../../ui/atoms/Heading';
-import {Button} from '../../../../ui/atoms/Button';
-import {PublicPageProps, PublicTemplate} from '../../../../ui/templates/PublicTemplate';
+import {PublicPageProps, PublicTemplate} from '../../../../../ui/templates/PublicTemplate';
+import {Heading} from '../../../../../ui/atoms/Heading';
+import {Button} from '../../../../../ui/atoms/Button';
 
 export interface SignInPageProps extends PublicPageProps {
 	onSignIn: () => void;

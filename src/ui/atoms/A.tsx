@@ -1,9 +1,9 @@
-import React, {AnchorHTMLAttributes} from 'react';
+import React, {AnchorHTMLAttributes, ComponentType} from 'react';
 
 export interface AProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	href: string;
 }
 
-export const A: React.FC<AProps> = (props) => {
+export const A: ComponentType<AProps> = (props) => {
 	return <a {...props} />;
 };

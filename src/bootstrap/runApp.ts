@@ -2,15 +2,15 @@ import {createRouter} from './router/createRouter';
 import {Page, UnsubscribePage} from '../core/presentation/Page';
 import {Redirect} from '../core/routing/Redirect';
 import {NotFoundError} from '../core/http/errors/NotFoundError';
-import {ReactRenderer} from '../core/presentation/adapters/react/ReactRenderer';
+import {ReactRenderer} from '../core/presentation/ReactRenderer';
 import {PageMetaManager} from '../core/presentation/PageMetaManager';
 import {createServiceContainer} from './serviceContainer/createServiceContainer';
 import {ControllerResult} from '../core/routing/ControllerResult';
 import {UnauthorizedError} from '../core/http/errors/UnauthorizedError';
 import {ErrorPage} from '../modules/error-handling/screens/unexpected-error/ErrorPage';
-import {ReactView} from '../core/presentation/adapters/react/ReactView';
 import {createConfiguration} from './configuration/createConfiguration';
 import {AlreadyAuthorizedError} from '../modules/authentication/session/errors/AlreadyAuthorizedError';
+import {View} from '../core/presentation/View';
 
 export async function runApp(): Promise<void> {
 	const appContainer = document.createElement('div');
@@ -54,7 +54,7 @@ export async function runApp(): Promise<void> {
 				const normalizedError = error instanceof Error ? error : new Error(String(error));
 
 				result = new Page(
-					new ReactView(ErrorPage, {templateProps: {}, message: normalizedError.message}),
+					new View(ErrorPage, {templateProps: {}, message: normalizedError.message}),
 					pageMetaBuilder.build({title: 'Error'}),
 				);
 
