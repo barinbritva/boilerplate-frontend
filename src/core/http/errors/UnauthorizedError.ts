@@ -1,4 +1,4 @@
-import {HttpStatus} from '../consts/HttpStatus';
+import {HttpStatus} from '../HttpStatus';
 import {HttpError} from './HttpError';
 
 export class UnauthorizedError extends HttpError {

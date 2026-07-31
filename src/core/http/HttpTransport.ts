@@ -1,11 +1,9 @@
-import {HttpStatus} from './consts/HttpStatus';
+import {HttpStatus} from './HttpStatus';
 import {UnauthorizedError} from './errors/UnauthorizedError';
 
 export class HttpTransport {
-	constructor(private readonly baseUrl: string) {}
-
 	public async get<Response>(url: string): Promise<Response> {
-		return this.makeRequest<Response>(`${this.baseUrl}${url}`);
+		return this.makeRequest<Response>(url);
 	}
 
 	private async makeRequest<Response>(url: string, options?: RequestInit): Promise<Response> {
@@ -14,6 +12,7 @@ export class HttpTransport {
 			if (response.status === HttpStatus.Unauthorized) {
 				throw new UnauthorizedError();
 			} else {
+				// todo create specific error classes
 				throw new Error('Failed to fetch data.');
 			}
 		}

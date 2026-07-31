@@ -1,12 +1,16 @@
 import {createRouter} from './createRouter';
 import {Page, UnsubscribePage} from '../../../core/presentation/Page';
 import {Redirect} from '../../../core/routing/Redirect';
-import {NotFoundError} from '../../../modules/common/services/http/errors/NotFoundError';
-import {Configuration} from '../../../modules/common/services/Configuration';
+import {NotFoundError} from '../../../core/http/errors/NotFoundError';
+import {Configuration} from '../../../core/configuration/Configuration';
 import {ReactRenderer} from '../../../core/presentation/adapters/react/ReactRenderer';
-import {PageMetaManager} from '../../../modules/common/services/PageMetaManager';
+import {PageMetaManager} from '../../../core/presentation/PageMetaManager';
 import {createServiceContainer} from './createServiceContainer';
 import {ControllerResult} from '../../../core/routing/ControllerResult';
+import {UnauthorizedError} from '../../../core/http/errors/UnauthorizedError';
+import {AlreadyAuthorizedError} from '../../../modules/authentication/errors/AlreadyAuthorizedError';
+import {ErrorPage} from '../../../modules/common/views/pages/ErrorPage';
+import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
 
 export async function runApp(): Promise<void> {
 	const appContainer = document.createElement('div');
@@ -18,7 +22,7 @@ export async function runApp(): Promise<void> {
 	const renderer = new ReactRenderer(appContainer);
 	const pageMetaManager = new PageMetaManager();
 
-	const {authenticator, navigationErrorResolver, navigation} = serviceContainer;
+	const {authenticator, navigation, routeBuilder, pageMetaBuilder} = serviceContainer;
 
 	// This authentication is just for demonstration purposes
 	await authenticator.loadAccount();
@@ -42,7 +46,20 @@ export async function runApp(): Promise<void> {
 
 			result = nullableResult;
 		} catch (error) {
-			result = navigationErrorResolver.resolve(error);
+			if (error instanceof UnauthorizedError) {
+				result = new Redirect(routeBuilder.signIn());
+			}
+
+			if (error instanceof AlreadyAuthorizedError) {
+				result = new Redirect(routeBuilder.root());
+			}
+
+			const normalizedError = error instanceof Error ? error : new Error(String(error));
+
+			result = new Page(
+				new ReactView(ErrorPage, {templateProps: {}, message: normalizedError.message}),
+				pageMetaBuilder.build({title: 'Error'}),
+			);
 
 			if (!(result instanceof Redirect)) {
 				// Sentry.captureException(error)

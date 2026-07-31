@@ -1,7 +1,7 @@
-import React, { ComponentType } from 'react';
-import {Heading} from '../../../common/views/atoms/Heading';
-import {Button} from '../../../common/views/atoms/Button';
-import {EmptyPageProps, EmptyTemplate} from '../../../common/views/templates/EmptyTemplate';
+import React, {ComponentType} from 'react';
+import {Heading} from '../common/views/atoms/Heading';
+import {Button} from '../common/views/atoms/Button';
+import {EmptyPageProps, EmptyTemplate} from '../common/views/templates/EmptyTemplate';
 
 export interface SignInPageProps extends EmptyPageProps {
 	onSignIn: () => void;

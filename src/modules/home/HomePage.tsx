@@ -1,7 +1,7 @@
 import React, {ComponentType} from 'react';
-import {CommonPageProps, CommonTemplate} from '../../../common/views/templates/CommonTemplate';
-import {Heading} from '../../../common/views/atoms/Heading';
-import {Button} from '../../../common/views/atoms/Button';
+import {CommonPageProps, CommonTemplate} from '../common/views/templates/CommonTemplate';
+import {Heading} from '../common/views/atoms/Heading';
+import {Button} from '../common/views/atoms/Button';
 
 export interface HomePageProps extends CommonPageProps {
 	onSignOut: () => void;

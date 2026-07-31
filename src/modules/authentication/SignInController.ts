@@ -1,24 +1,24 @@
-import {Page} from '../../../core/presentation/Page';
-import {Controller} from '../../../core/routing/Controller';
-import {ControllerResult} from '../../../core/routing/ControllerResult';
-import {Authenticator} from '../services/Authenticator';
-import {Navigation} from '../../common/navigation/services/Navigation';
-import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
-import {RouteBuilder} from '../../common/services/RouteBuilder';
-import {SignInPage} from '../views/pages/SignInPage';
-import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
+import {Page} from '../../core/presentation/Page';
+import {Controller} from '../../core/routing/Controller';
+import {ControllerResult} from '../../core/routing/ControllerResult';
+import {Authenticator} from './Authenticator';
+import {BrowserNavigation} from '../../core/navigation/BrowserNavigation';
+import {PageMetaBuilder} from '../../core/presentation/PageMetaBuilder';
+import {RouteBuilder} from '../common/services/RouteBuilder';
+import {SignInPage} from './SignInPage';
+import {ReactView} from '../../core/presentation/adapters/react/ReactView';
 
 export class SignInController implements Controller {
 	private readonly authenticator: Authenticator;
 	private readonly routeBuilder: RouteBuilder;
 	private readonly pageMetaBuilder: PageMetaBuilder;
-	private readonly navigation: Navigation;
+	private readonly navigation: BrowserNavigation;
 
 	constructor(
 		authenticator: Authenticator,
 		routeBuilder: RouteBuilder,
 		pageMetaBuilder: PageMetaBuilder,
-		navigation: Navigation,
+		navigation: BrowserNavigation,
 	) {
 		this.authenticator = authenticator;
 		this.routeBuilder = routeBuilder;

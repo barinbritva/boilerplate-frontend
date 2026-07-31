@@ -1,5 +1,5 @@
 import {BrowserHistory, createBrowserHistory, Location} from 'history';
-import {Middleware, Pipeline} from '../../services/Pipeline';
+import {Middleware, Pipeline} from '../utils/Pipeline';
 
 export type {Location};
 
@@ -7,7 +7,7 @@ export interface NavigationContext {
 	link: string;
 }
 
-export class Navigation {
+export class BrowserNavigation {
 	public readonly history: BrowserHistory;
 	private readonly pipeline: Pipeline<NavigationContext>;
 

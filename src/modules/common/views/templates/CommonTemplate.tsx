@@ -1,5 +1,5 @@
 import React from 'react';
-import {AccountModel} from '../../../authentication/models/AccountModel';
+import {AccountModel} from '../../../authentication/AccountModel';
 
 export interface CommonTemplateProps {
 	account: AccountModel;

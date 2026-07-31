@@ -1,4 +1,4 @@
-import {ArrayUtils} from '../../modules/common/services/ArrayUtils';
+import {ArrayUtils} from '../utils/ArrayUtils';
 
 export interface UnsubscribeView {
 	(): void;

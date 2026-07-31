@@ -1,12 +1,20 @@
 import {PageMeta} from '../../../core/presentation/PageMeta';
-import {ServiceContainer} from '../types/ServiceContainer';
-import {Authenticator} from '../../../modules/authentication/services/Authenticator';
-import {Configuration} from '../../../modules/common/services/Configuration';
-import {NavigationErrorResolver} from '../../../modules/common/navigation/services/NavigationErrorResolver';
+import {Authenticator} from '../../../modules/authentication/Authenticator';
+import {Configuration} from '../../../core/configuration/Configuration';
 import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
-import {HttpTransport} from '../../../modules/common/services/http/HttpTransport';
+import {HttpTransport} from '../../../core/http/HttpTransport';
 import {RouteBuilder} from '../../../modules/common/services/RouteBuilder';
-import {Navigation} from '../../../modules/common/navigation/services/Navigation';
+import {BrowserNavigation} from '../../../core/navigation/BrowserNavigation';
+
+export interface ServiceContainer {
+	navigation: BrowserNavigation;
+	configuration: Configuration;
+	httpTransport: HttpTransport;
+	authenticator: Authenticator;
+	defaultPageMeta: PageMeta;
+	pageMetaBuilder: PageMetaBuilder;
+	routeBuilder: RouteBuilder;
+}
 
 export function createServiceContainer(configuration: Configuration): ServiceContainer {
 	const defaultPageMeta = new PageMeta('Boilerplate');
@@ -14,13 +22,12 @@ export function createServiceContainer(configuration: Configuration): ServiceCon
 	const pageMetaBuilder = new PageMetaBuilder({defaultPageMeta});
 
 	return {
-		navigation: new Navigation(),
+		navigation: new BrowserNavigation(),
 		configuration,
-		restApi: new HttpTransport(configuration.apiUrl),
+		httpTransport: new HttpTransport(),
 		authenticator: new Authenticator(),
 		defaultPageMeta,
 		pageMetaBuilder,
 		routeBuilder,
-		navigationErrorResolver: new NavigationErrorResolver(routeBuilder, pageMetaBuilder),
 	};
 }

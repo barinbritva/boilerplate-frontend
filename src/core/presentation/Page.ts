@@ -1,5 +1,5 @@
 import {View} from './View';
-import {ArrayUtils} from '../../modules/common/services/ArrayUtils';
+import {ArrayUtils} from '../utils/ArrayUtils';
 import {PageMeta} from './PageMeta';
 
 export interface UnsubscribePage {
