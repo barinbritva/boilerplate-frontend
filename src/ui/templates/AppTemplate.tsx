@@ -1,8 +1,9 @@
 import React, {ComponentType} from 'react';
-import {AccountModel} from '../../modules/authentication/session/AccountModel';
 
 export interface AppTemplateProps {
-	account: AccountModel;
+	account: {
+		id: string;
+	};
 	children?: React.ReactNode;
 }
 
