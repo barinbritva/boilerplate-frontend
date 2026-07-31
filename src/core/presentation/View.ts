@@ -1,5 +1,5 @@
 import {ComponentType} from 'react';
-import {ArrayUtils} from '../utils/ArrayUtils';
+import {ArrayUtils} from '~/core/utils/ArrayUtils';
 
 export interface UnsubscribeView {
 	(): void;

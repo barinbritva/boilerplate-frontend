@@ -1,5 +1,5 @@
 import UniversalRouter from 'universal-router';
-import {ServiceContainer} from '../serviceContainer/createServiceContainer';
+import {ServiceContainer} from '~/bootstrap/serviceContainer/createServiceContainer';
 import {ControllerResult} from '~/core/routing/ControllerResult';
 import {Route} from './RouteBuilder';
 import {SignInController} from '~/modules/authentication/screens/SignInController';

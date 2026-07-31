@@ -1,10 +1,10 @@
 import {Page} from '~/core/presentation/Page';
 import {Controller} from '~/core/routing/Controller';
 import {ControllerResult} from '~/core/routing/ControllerResult';
-import {Authenticator} from '../session/Authenticator';
+import {Authenticator} from '~/modules/authentication/session/Authenticator';
 import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
 import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
-import {RouteBuilder} from '../../../bootstrap/router/RouteBuilder';
+import {RouteBuilder} from '~/bootstrap/router/RouteBuilder';
 import {View} from '~/core/presentation/View';
 import {SignInPage} from './ui/pages/SignInPage';
 

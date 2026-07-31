@@ -1,0 +1,101 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"formatter": {
+		"enabled": false
+	},
+	"assist": {
+		"enabled": false
+	},
+	"linter": {
+		"rules": {
+			"preset": "none",
+			"style": {
+				"noRestrictedImports": {
+					"level": "error",
+					"options": {
+						"patterns": [
+							{
+								"group": ["..", "../**"],
+								"message": "Use the ~/ source alias instead of importing from a parent directory."
+							}
+						]
+					}
+				}
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["src/core/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noRestrictedImports": {
+							"level": "error",
+							"options": {
+								"patterns": [
+									{
+										"group": ["..", "../**"],
+										"message": "Use the ~/ source alias instead of importing from a parent directory."
+									},
+									{
+										"group": ["~/bootstrap/**", "~/modules/**", "~/ui/**"],
+										"message": "Core must remain independent."
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/modules/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noRestrictedImports": {
+							"level": "error",
+							"options": {
+								"patterns": [
+									{
+										"group": ["..", "../**"],
+										"message": "Use the ~/ source alias instead of importing from a parent directory."
+									},
+									{
+										"group": ["~/bootstrap/**", "!~/bootstrap/router/RouteBuilder"],
+										"message": "Modules must not depend on bootstrap. RouteBuilder is a temporary known exception."
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/ui/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noRestrictedImports": {
+							"level": "error",
+							"options": {
+								"patterns": [
+									{
+										"group": ["..", "../**"],
+										"message": "Use the ~/ source alias instead of importing from a parent directory."
+									},
+									{
+										"group": ["~/bootstrap/**", "~/modules/**", "~/core/**"],
+										"message": "Global UI must remain presentation-only."
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}

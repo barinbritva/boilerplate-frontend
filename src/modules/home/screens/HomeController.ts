@@ -5,7 +5,7 @@ import {ControllerResult} from '~/core/routing/ControllerResult';
 import {Authenticator} from '~/modules/authentication/session/Authenticator';
 import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
 import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
-import {RouteBuilder} from '../../../bootstrap/router/RouteBuilder';
+import {RouteBuilder} from '~/bootstrap/router/RouteBuilder';
 import {HomePage} from './ui/pages/HomePage';
 import {View} from '~/core/presentation/View';
 

@@ -1,9 +1,9 @@
 import {PageMeta} from '~/core/presentation/PageMeta';
 import {Authenticator} from '~/modules/authentication/session/Authenticator';
-import {Configuration} from '../configuration/Configuration';
+import {Configuration} from '~/bootstrap/configuration/Configuration';
 import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
 import {HttpTransport} from '~/core/http/HttpTransport';
-import {RouteBuilder} from '../router/RouteBuilder';
+import {RouteBuilder} from '~/bootstrap/router/RouteBuilder';
 import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
 
 export interface ServiceContainer {
