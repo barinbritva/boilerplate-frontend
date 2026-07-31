@@ -1,11 +1,12 @@
-import {Page} from '../../common/navigation/entities/Page';
-import {Controller} from '../../common/navigation/interfaces/Controller';
-import {ControllerResult} from '../../common/navigation/interfaces/ControllerResult';
+import {Page} from '../../../core/presentation/Page';
+import {Controller} from '../../../core/routing/Controller';
+import {ControllerResult} from '../../../core/routing/ControllerResult';
 import {Authenticator} from '../services/Authenticator';
 import {Navigation} from '../../common/navigation/services/Navigation';
-import {PageMetaBuilder} from '../../common/services/PageMetaBuilder';
+import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '../../common/services/RouteBuilder';
 import {SignInPage} from '../views/pages/SignInPage';
+import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
 
 export class SignInController implements Controller {
 	private readonly authenticator: Authenticator;
@@ -27,13 +28,12 @@ export class SignInController implements Controller {
 
 	public handle(): Promise<ControllerResult> | ControllerResult {
 		return new Page(
-			SignInPage,
-			{
+			new ReactView(SignInPage, {
 				templateProps: {},
 				onSignIn: () => {
 					this.handleSignIn();
 				},
-			},
+			}),
 			this.pageMetaBuilder.build({title: 'Sign In'}),
 		);
 	}

@@ -1,12 +1,13 @@
 import {AccountModel} from '../../authentication/models/AccountModel';
-import {Page} from '../../common/navigation/entities/Page';
-import {Controller} from '../../common/navigation/interfaces/Controller';
-import {ControllerResult} from '../../common/navigation/interfaces/ControllerResult';
+import {Page} from '../../../core/presentation/Page';
+import {Controller} from '../../../core/routing/Controller';
+import {ControllerResult} from '../../../core/routing/ControllerResult';
 import {Authenticator} from '../../authentication/services/Authenticator';
 import {Navigation} from '../../common/navigation/services/Navigation';
-import {PageMetaBuilder} from '../../common/services/PageMetaBuilder';
+import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '../../common/services/RouteBuilder';
 import {HomePage} from '../views/pages/HomePage';
+import {ReactView} from '../../../core/presentation/adapters/react/ReactView';
 
 export class HomeController implements Controller {
 	private readonly authenticator: Authenticator;
@@ -31,13 +32,12 @@ export class HomeController implements Controller {
 
 	public handle(): Promise<ControllerResult> | ControllerResult {
 		return new Page(
-			HomePage,
-			{
+			new ReactView(HomePage, {
 				templateProps: {account: this.account},
 				onSignOut: () => {
 					this.handleSignOut();
 				},
-			},
+			}),
 			this.pageMetaBuilder.build({title: 'Home'}),
 		);
 	}

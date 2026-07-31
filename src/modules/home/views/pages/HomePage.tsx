@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ComponentType} from 'react';
 import {CommonPageProps, CommonTemplate} from '../../../common/views/templates/CommonTemplate';
 import {Heading} from '../../../common/views/atoms/Heading';
 import {Button} from '../../../common/views/atoms/Button';
@@ -7,7 +7,7 @@ export interface HomePageProps extends CommonPageProps {
 	onSignOut: () => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({templateProps, onSignOut}) => {
+export const HomePage: ComponentType<HomePageProps> = ({templateProps, onSignOut}) => {
 	return (
 		<CommonTemplate {...templateProps}>
 			<Heading>Home</Heading>

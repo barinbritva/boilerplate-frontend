@@ -1,12 +1,12 @@
 import {createRouter} from './createRouter';
-import {Page, UnsubscribePage} from '../../../modules/common/navigation/entities/Page';
-import {Redirect} from '../../../modules/common/navigation/entities/Redirect';
+import {Page, UnsubscribePage} from '../../../core/presentation/Page';
+import {Redirect} from '../../../core/routing/Redirect';
 import {NotFoundError} from '../../../modules/common/services/http/errors/NotFoundError';
 import {Configuration} from '../../../modules/common/services/Configuration';
-import {DomManager} from '../../../modules/common/navigation/services/DomManager';
+import {ReactRenderer} from '../../../core/presentation/adapters/react/ReactRenderer';
 import {PageMetaManager} from '../../../modules/common/services/PageMetaManager';
 import {createServiceContainer} from './createServiceContainer';
-import {ControllerResult} from '../../../modules/common/navigation/interfaces/ControllerResult';
+import {ControllerResult} from '../../../core/routing/ControllerResult';
 
 export async function runApp(): Promise<void> {
 	const appContainer = document.createElement('div');
@@ -15,7 +15,7 @@ export async function runApp(): Promise<void> {
 	const config = new Configuration();
 	const serviceContainer = createServiceContainer(config);
 	const router = createRouter(serviceContainer);
-	const dom = new DomManager(appContainer);
+	const renderer = new ReactRenderer(appContainer);
 	const pageMetaManager = new PageMetaManager();
 
 	const {authenticator, navigationErrorResolver, navigation} = serviceContainer;
@@ -63,12 +63,12 @@ export async function runApp(): Promise<void> {
 				}
 
 				if (update.view != null) {
-					dom.render(update.view);
+					renderer.render(update.view);
 				}
 			});
 		}
 
-		dom.render(result);
+		renderer.render(result.view);
 	}
 
 	navigation.history.listen(({location}) => {

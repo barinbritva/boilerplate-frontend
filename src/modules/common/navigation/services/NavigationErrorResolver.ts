@@ -1,11 +1,12 @@
-import {Page} from '../entities/Page';
-import {Redirect} from '../entities/Redirect';
+import {Page} from '../../../../core/presentation/Page';
+import {Redirect} from '../../../../core/routing/Redirect';
 import {AlreadyAuthorizedError} from '../../services/http/errors/AlreadyAuthorizedError';
 import {UnauthorizedError} from '../../services/http/errors/UnauthorizedError';
-import {ControllerResult} from '../interfaces/ControllerResult';
+import {ControllerResult} from '../../../../core/routing/ControllerResult';
 import {ErrorPage} from '../../views/pages/ErrorPage';
-import {PageMetaBuilder} from '../../services/PageMetaBuilder';
+import {PageMetaBuilder} from '../../../../core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '../../services/RouteBuilder';
+import {View} from '../../../../core/presentation/View';
 
 export class NavigationErrorResolver {
 	private readonly routes: RouteBuilder;
@@ -28,8 +29,7 @@ export class NavigationErrorResolver {
 		const normalizedError = error instanceof Error ? error : new Error(String(error));
 
 		return new Page(
-			ErrorPage,
-			{templateProps: {}, message: normalizedError.message},
+			new View(ErrorPage, {templateProps: {}, message: normalizedError.message}),
 			this.pageMetaBuilder.build({title: 'Error'}),
 		);
 	}

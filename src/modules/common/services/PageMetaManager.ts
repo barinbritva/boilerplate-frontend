@@ -1,4 +1,4 @@
-import {PageMeta} from '../navigation/entities/Page';
+import {PageMeta} from '../../../core/presentation/PageMeta';
 
 export class PageMetaManager {
 	public apply(data: PageMeta) {

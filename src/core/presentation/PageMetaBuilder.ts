@@ -1,4 +1,4 @@
-import {PageMeta} from '../navigation/entities/Page';
+import {PageMeta} from './PageMeta';
 
 export interface PageMetaParams {
 	title?: string | string[];

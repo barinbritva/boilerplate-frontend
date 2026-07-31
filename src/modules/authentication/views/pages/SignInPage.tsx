@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import {Heading} from '../../../common/views/atoms/Heading';
 import {Button} from '../../../common/views/atoms/Button';
 import {EmptyPageProps, EmptyTemplate} from '../../../common/views/templates/EmptyTemplate';
@@ -7,7 +7,7 @@ export interface SignInPageProps extends EmptyPageProps {
 	onSignIn: () => void;
 }
 
-export const SignInPage: React.FC<SignInPageProps> = ({templateProps, onSignIn}) => {
+export const SignInPage: ComponentType<SignInPageProps> = ({templateProps, onSignIn}) => {
 	return (
 		<EmptyTemplate {...templateProps}>
 			<Heading>Welcome</Heading>
