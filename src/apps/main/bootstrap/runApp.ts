@@ -1,13 +1,12 @@
 import {createRouter} from './createRouter';
-import {Page, UnsubscribePage} from '../../../entities/Page';
-import {Redirect} from '../../../entities/Redirect';
-import {NotFoundError} from '../../../errors/NotFoundError';
-import {Configuration} from '../../../services/Configuration';
-import {DomManager} from '../../../services/DomManager';
-import {PageMetaManager} from '../../../services/PageMetaManager';
-import {go, history} from '../../../services/navigation';
+import {Page, UnsubscribePage} from '../../../modules/common/navigation/entities/Page';
+import {Redirect} from '../../../modules/common/navigation/entities/Redirect';
+import {NotFoundError} from '../../../modules/common/services/http/errors/NotFoundError';
+import {Configuration} from '../../../modules/common/services/Configuration';
+import {DomManager} from '../../../modules/common/navigation/services/DomManager';
+import {PageMetaManager} from '../../../modules/common/services/PageMetaManager';
 import {createServiceContainer} from './createServiceContainer';
-import {ControllerResult} from '../../../interfaces/ControllerResult';
+import {ControllerResult} from '../../../modules/common/navigation/interfaces/ControllerResult';
 
 export async function runApp(): Promise<void> {
 	const appContainer = document.createElement('div');
@@ -19,7 +18,7 @@ export async function runApp(): Promise<void> {
 	const dom = new DomManager(appContainer);
 	const pageMetaManager = new PageMetaManager();
 
-	const {authenticator, navigationErrorResolver} = serviceContainer;
+	const {authenticator, navigationErrorResolver, navigation} = serviceContainer;
 
 	// This authentication is just for demonstration purposes
 	await authenticator.loadAccount();
@@ -52,7 +51,7 @@ export async function runApp(): Promise<void> {
 		}
 
 		if (result instanceof Redirect) {
-			go(result.redirectTo);
+			navigation.go(result.redirectTo);
 			return;
 		}
 
@@ -72,9 +71,9 @@ export async function runApp(): Promise<void> {
 		dom.render(result);
 	}
 
-	history.listen(({location}) => {
+	navigation.history.listen(({location}) => {
 		navigate(location);
 	});
 
-	navigate(history.location);
+	navigate(navigation.history.location);
 }
