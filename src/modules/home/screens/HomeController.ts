@@ -1,13 +1,13 @@
-import {AccountModel} from '../../authentication/session/AccountModel';
-import {Page} from '../../../core/presentation/Page';
-import {Controller} from '../../../core/routing/Controller';
-import {ControllerResult} from '../../../core/routing/ControllerResult';
-import {Authenticator} from '../../authentication/session/Authenticator';
-import {BrowserNavigation} from '../../../core/navigation/BrowserNavigation';
-import {PageMetaBuilder} from '../../../core/presentation/PageMetaBuilder';
+import {AccountModel} from '~/modules/authentication/session/AccountModel';
+import {Page} from '~/core/presentation/Page';
+import {Controller} from '~/core/routing/Controller';
+import {ControllerResult} from '~/core/routing/ControllerResult';
+import {Authenticator} from '~/modules/authentication/session/Authenticator';
+import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
+import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '../../../bootstrap/router/RouteBuilder';
 import {HomePage} from './ui/pages/HomePage';
-import {View} from '../../../core/presentation/View';
+import {View} from '~/core/presentation/View';
 
 export class HomeController implements Controller {
 	private readonly authenticator: Authenticator;

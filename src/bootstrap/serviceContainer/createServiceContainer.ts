@@ -1,10 +1,10 @@
-import {PageMeta} from '../../core/presentation/PageMeta';
-import {Authenticator} from '../../modules/authentication/session/Authenticator';
+import {PageMeta} from '~/core/presentation/PageMeta';
+import {Authenticator} from '~/modules/authentication/session/Authenticator';
 import {Configuration} from '../configuration/Configuration';
-import {PageMetaBuilder} from '../../core/presentation/PageMetaBuilder';
-import {HttpTransport} from '../../core/http/HttpTransport';
+import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
+import {HttpTransport} from '~/core/http/HttpTransport';
 import {RouteBuilder} from '../router/RouteBuilder';
-import {BrowserNavigation} from '../../core/navigation/BrowserNavigation';
+import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
 
 export interface ServiceContainer {
 	navigation: BrowserNavigation;

@@ -1,16 +1,16 @@
 import {createRouter} from './router/createRouter';
-import {Page, UnsubscribePage} from '../core/presentation/Page';
-import {Redirect} from '../core/routing/Redirect';
-import {NotFoundError} from '../core/http/errors/NotFoundError';
-import {ReactRenderer} from '../core/presentation/ReactRenderer';
-import {PageMetaManager} from '../core/presentation/PageMetaManager';
+import {Page, UnsubscribePage} from '~/core/presentation/Page';
+import {Redirect} from '~/core/routing/Redirect';
+import {NotFoundError} from '~/core/http/errors/NotFoundError';
+import {ReactRenderer} from '~/core/presentation/ReactRenderer';
+import {PageMetaManager} from '~/core/presentation/PageMetaManager';
 import {createServiceContainer} from './serviceContainer/createServiceContainer';
-import {ControllerResult} from '../core/routing/ControllerResult';
-import {UnauthorizedError} from '../core/http/errors/UnauthorizedError';
-import {ErrorPage} from '../modules/error-handling/screens/unexpected-error/ErrorPage';
+import {ControllerResult} from '~/core/routing/ControllerResult';
+import {UnauthorizedError} from '~/core/http/errors/UnauthorizedError';
+import {ErrorPage} from '~/modules/error-handling/screens/unexpected-error/ErrorPage';
 import {createConfiguration} from './configuration/createConfiguration';
-import {AlreadyAuthorizedError} from '../modules/authentication/session/errors/AlreadyAuthorizedError';
-import {View} from '../core/presentation/View';
+import {AlreadyAuthorizedError} from '~/modules/authentication/session/errors/AlreadyAuthorizedError';
+import {View} from '~/core/presentation/View';
 
 export async function runApp(): Promise<void> {
 	const appContainer = document.createElement('div');

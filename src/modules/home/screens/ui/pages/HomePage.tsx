@@ -1,7 +1,7 @@
 import React, {ComponentType} from 'react';
-import {Heading} from '../../../../../ui/atoms/Heading';
-import {Button} from '../../../../../ui/atoms/Button';
-import {AppPageProps, AppTemplate} from '../../../../../ui/templates/AppTemplate';
+import {Heading} from '~/ui/atoms/Heading';
+import {Button} from '~/ui/atoms/Button';
+import {AppPageProps, AppTemplate} from '~/ui/templates/AppTemplate';
 
 export interface HomePageProps extends AppPageProps {
 	onSignOut: () => void;

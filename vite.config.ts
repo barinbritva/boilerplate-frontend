@@ -1,5 +1,6 @@
 import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
+import {fileURLToPath, URL} from 'node:url';
 import {env} from './env';
 
 // Required env variables
@@ -45,6 +46,11 @@ export default defineConfig(({mode}) => {
 
 	return {
 		base: './',
+		resolve: {
+			alias: {
+				'~': fileURLToPath(new URL('./src', import.meta.url)),
+			},
+		},
 		define: {
 			__APP_ENV__: JSON.stringify(appEnv),
 		},
