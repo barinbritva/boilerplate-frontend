@@ -11,6 +11,7 @@ import {ErrorPage} from '~/modules/errorHandling/unexpectedErrorScreen/ErrorPage
 import {createConfiguration} from './configuration/createConfiguration';
 import {AlreadyAuthorizedError} from '~/modules/authentication/session/errors/AlreadyAuthorizedError';
 import {View} from '~/core/presentation/View';
+import {createReactContexts} from './react/createReactContexts';
 
 export async function runApp(): Promise<void> {
 	const appContainer = document.createElement('div');
@@ -18,11 +19,10 @@ export async function runApp(): Promise<void> {
 
 	const config = createConfiguration();
 	const serviceContainer = createServiceContainer(config);
-	const router = createRouter(serviceContainer);
-	const renderer = new ReactRenderer(appContainer);
-	const pageMetaManager = new PageMetaManager();
-
 	const {authenticator, navigation, routeBuilder, pageMetaBuilder} = serviceContainer;
+	const router = createRouter(serviceContainer);
+	const renderer = new ReactRenderer(appContainer, createReactContexts({navigation, strictModeEnabled: true}));
+	const pageMetaManager = new PageMetaManager();
 
 	// This authentication is just for demonstration purposes
 	await authenticator.loadAccount();

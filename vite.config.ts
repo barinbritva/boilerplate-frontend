@@ -6,16 +6,6 @@ import {env} from './env';
 // Required env variables
 const APP_ENV_KEYS: string[] = [];
 
-// Entries for multiple apps
-// todo implement
-const indexEntry = 'index';
-const appsEntries: {
-	index: string;
-	[key: string]: string;
-} = {
-	[indexEntry]: './index.html',
-};
-
 function resolveAppEnvValue(key: (typeof APP_ENV_KEYS)[number]): string | never {
 	if (process.env[key] === undefined) {
 		throw new Error(`Missing required app env var: ${key}`);
@@ -34,15 +24,14 @@ function transformHtmlPlugin() {
 }
 
 export default defineConfig(({mode}) => {
+	const buildEntry = 'index';
+	const input = './index.html';
 	const isDev = mode === 'development';
-	const buildEntry = indexEntry;
 	const tsconfigPath = isDev ? './tsconfig.dev.json' : './tsconfig.json';
 	const appEnv = APP_ENV_KEYS.reduce<Record<string, string>>((accumulator, key) => {
 		accumulator[key] = resolveAppEnvValue(key);
 		return accumulator;
 	}, {});
-
-	const input = appsEntries[buildEntry] ?? appsEntries.index;
 
 	return {
 		base: './',
@@ -75,6 +64,10 @@ export default defineConfig(({mode}) => {
 			checker({
 				typescript: {
 					tsconfigPath,
+				},
+				biome: {
+					command: 'lint',
+					watchPath: 'src',
 				},
 			}),
 			transformHtmlPlugin(),

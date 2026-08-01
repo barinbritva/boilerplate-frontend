@@ -1,26 +1,34 @@
 import React, {ComponentType, type MouseEvent} from 'react';
-import {A, AProps} from './A';
+import {A, AProps} from '~/ui/atoms/A';
+import {useNavigate} from '~/ui/contexts/NavigationContext';
 
 function isExternalLink(link: string): boolean {
 	return link.includes('://');
 }
 
-// todo refactor: use navigation service instead of this function
-function go(link: string): void {
-	console.log(`Navigating to ${link}`);
+function isModifiedClick(event: MouseEvent<HTMLAnchorElement>): boolean {
+	return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
 }
 
 export const Link: ComponentType<AProps> = (props) => {
-	function handleNav(event: MouseEvent<HTMLAnchorElement>): void {
-		const href = props.href ?? '';
-		const onClick = props.onClick;
+	const navigate = useNavigate();
 
-		if (isExternalLink(href) || (props.target && props.target !== '_self')) {
+	function handleNav(event: MouseEvent<HTMLAnchorElement>): void {
+		props.onClick?.(event);
+
+		if (
+			event.defaultPrevented ||
+			event.button !== 0 ||
+			isModifiedClick(event) ||
+			props.download != null ||
+			(props.target != null && props.target !== '_self') ||
+			isExternalLink(props.href)
+		) {
 			return;
 		}
 
 		event.preventDefault();
-		onClick ? onClick(event) : go(href);
+		void navigate(props.href);
 	}
 
 	return <A {...props} onClick={handleNav} />;

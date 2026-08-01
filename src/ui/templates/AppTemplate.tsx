@@ -1,4 +1,5 @@
 import React, {ComponentType} from 'react';
+import {Link} from '~/ui/atoms/Link';
 
 export interface AppTemplateProps {
 	account: {
@@ -14,7 +15,9 @@ export interface AppPageProps {
 export const AppTemplate: ComponentType<AppTemplateProps> = ({account, children}) => {
 	return (
 		<div>
-			<aside>user #{account.id}</aside>
+			<aside>
+				user <Link href="/profile">#{account.id}</Link>
+			</aside>
 			<main>{children}</main>
 		</div>
 	);
