@@ -6,7 +6,7 @@ import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
 import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '~/bootstrap/router/RouteBuilder';
 import {View} from '~/core/presentation/View';
-import {SignInPage} from './ui/pages/SignInPage';
+import {SignInPage} from './SignInPage';
 
 export class SignInController implements Controller {
 	private readonly authenticator: Authenticator;

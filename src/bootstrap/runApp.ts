@@ -7,7 +7,7 @@ import {PageMetaManager} from '~/core/presentation/PageMetaManager';
 import {createServiceContainer} from './serviceContainer/createServiceContainer';
 import {ControllerResult} from '~/core/routing/ControllerResult';
 import {UnauthorizedError} from '~/core/http/errors/UnauthorizedError';
-import {ErrorPage} from '~/modules/error-handling/screens/unexpected-error/ErrorPage';
+import {ErrorPage} from '~/modules/errorHandling/unexpectedErrorScreen/ErrorPage';
 import {createConfiguration} from './configuration/createConfiguration';
 import {AlreadyAuthorizedError} from '~/modules/authentication/session/errors/AlreadyAuthorizedError';
 import {View} from '~/core/presentation/View';

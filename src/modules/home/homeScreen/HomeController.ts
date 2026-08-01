@@ -6,7 +6,7 @@ import {Authenticator} from '~/modules/authentication/session/Authenticator';
 import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
 import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
 import {RouteBuilder} from '~/bootstrap/router/RouteBuilder';
-import {HomePage} from './ui/pages/HomePage';
+import {HomePage} from './HomePage';
 import {View} from '~/core/presentation/View';
 
 export class HomeController implements Controller {
