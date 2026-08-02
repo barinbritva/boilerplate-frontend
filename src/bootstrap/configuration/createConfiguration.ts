@@ -1,5 +1,8 @@
+import {validateAppEnvironment} from '~/bootstrap/configuration/validateAppEnvironment.mjs';
 import {Configuration} from './Configuration';
 
 export function createConfiguration(): Configuration {
-	return new Configuration();
+	const appEnv = validateAppEnvironment(window.APP_ENV);
+
+	return new Configuration(appEnv);
 }
