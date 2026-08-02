@@ -12,11 +12,11 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       mobx:
-        specifier: 6.12.3
-        version: 6.12.3
+        specifier: 7.0.0
+        version: 7.0.0
       mobx-react-lite:
-        specifier: 4.0.7
-        version: 4.0.7(mobx@6.12.3)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: 5.0.0
+        version: 5.0.0(mobx@7.0.0)(react@19.2.8)
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -450,21 +450,14 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
-  mobx-react-lite@4.0.7:
-    resolution: {integrity: sha512-RjwdseshK9Mg8On5tyJZHtGD+J78ZnCnRaxeQDSiciKVQDUbfZcXhmld0VMxAwvcTnPEHZySGGewm467Fcpreg==}
+  mobx-react-lite@5.0.0:
+    resolution: {integrity: sha512-+Kg+KhOQx/ggkFuHViUJvsOsgmAFvBUHfGb/cimNX5Csb1MfMYjbp5CcUu6kw2zr11HwB1gaD7FnqdAcCryvhg==}
     peerDependencies:
-      mobx: ^6.9.0
-      react: ^16.8.0 || ^17 || ^18
-      react-dom: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
+      mobx: ^7.0.0
+      react: ^18 || ^19
 
-  mobx@6.12.3:
-    resolution: {integrity: sha512-c8NKkO4R2lShkSXZ2Ongj1ycjugjzFFo/UswHBnS62y07DMcTc9Rvo03/3nRyszIvwPNljlkd4S828zIBv/piw==}
+  mobx@7.0.0:
+    resolution: {integrity: sha512-J+hR/wq6RdBnB4QXQRqGrWL9vOOLKaYhXh0ooxLAW4AE72av10Y5+xiaxohUYmPZiUswfpxMjQooYqpWkv+Fxg==}
 
   nanoid@3.3.16:
     resolution: {integrity: sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==}
@@ -573,11 +566,6 @@ packages:
 
   universal-router@10.0.3:
     resolution: {integrity: sha512-EeprhLOcCs65oS37EiaETWlbTCq4UMqrqU5Oew1emu840EgugcpSz5OTXpK9zfsJtFW3bt0iYgrbSlquwRcMhw==}
-
-  use-sync-external-store@1.2.2:
-    resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
   vite-plugin-checker@0.14.5:
     resolution: {integrity: sha512-c9lQ92eisUO+F7Fd93aelojmiOS+NQpPgQ1XR2LTQHox1/laZf4yAoQj+L3RA9Vgh10e2nFd9b8r2LLyYZsbpA==}
@@ -947,15 +935,12 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
 
-  mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  mobx-react-lite@5.0.0(mobx@7.0.0)(react@19.2.8):
     dependencies:
-      mobx: 6.12.3
+      mobx: 7.0.0
       react: 19.2.8
-      use-sync-external-store: 1.2.2(react@19.2.8)
-    optionalDependencies:
-      react-dom: 19.2.8(react@19.2.8)
 
-  mobx@6.12.3: {}
+  mobx@7.0.0: {}
 
   nanoid@3.3.16: {}
 
@@ -1060,10 +1045,6 @@ snapshots:
   unicorn-magic@0.3.0: {}
 
   universal-router@10.0.3: {}
-
-  use-sync-external-store@1.2.2(react@19.2.8):
-    dependencies:
-      react: 19.2.8
 
   vite-plugin-checker@0.14.5(@biomejs/biome@2.5.5)(typescript@5.6.3)(vite@8.2.0(@types/node@26.1.1)(terser@5.34.1)):
     dependencies:

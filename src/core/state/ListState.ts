@@ -1,11 +1,10 @@
-import {observable, makeObservable, IObservableArray} from 'mobx';
+import {observable, IObservableArray} from 'mobx';
 
 export class ListModel<T> {
 	public readonly observableItems: IObservableArray<T>;
 
 	constructor() {
 		this.observableItems = observable([]);
-		makeObservable(this);
 	}
 
 	public get items(): readonly T[] {
