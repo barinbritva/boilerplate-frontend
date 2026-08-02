@@ -1,7 +1,7 @@
 import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
 import {fileURLToPath, URL} from 'node:url';
-import {resolveViteEnv} from './build.env';
+import {resolveViteEnv} from './build.env.js';
 
 function transformHtmlPlugin() {
 	return {
