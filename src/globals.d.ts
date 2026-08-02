@@ -3,7 +3,9 @@ interface Dict<T> {
 }
 
 declare global {
-	var __APP_ENV__: Dict<string>;
+	interface Window {
+		APP_ENV: Dict<string>;
+	}
 }
 
 export {};
