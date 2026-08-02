@@ -1,27 +1,7 @@
 import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
-import {env} from './env';
-
-// Required env variables
-const APP_ENV_KEYS: string[] = [];
-
-// Entries for multiple apps
-// todo implement
-const indexEntry = 'index';
-const appsEntries: {
-	index: string;
-	[key: string]: string;
-} = {
-	[indexEntry]: './index.html',
-};
-
-function resolveAppEnvValue(key: (typeof APP_ENV_KEYS)[number]): string | never {
-	if (process.env[key] === undefined) {
-		throw new Error(`Missing required app env var: ${key}`);
-	}
-
-	return process.env[key];
-}
+import {fileURLToPath, URL} from 'node:url';
+import {resolveViteEnv} from './build.env.js';
 
 function transformHtmlPlugin() {
 	return {
@@ -33,20 +13,18 @@ function transformHtmlPlugin() {
 }
 
 export default defineConfig(({mode}) => {
+	const env = resolveViteEnv(mode);
+	const buildEntry = 'index';
+	const input = './index.html';
 	const isDev = mode === 'development';
-	const buildEntry = indexEntry;
 	const tsconfigPath = isDev ? './tsconfig.dev.json' : './tsconfig.json';
-	const appEnv = APP_ENV_KEYS.reduce<Record<string, string>>((accumulator, key) => {
-		accumulator[key] = resolveAppEnvValue(key);
-		return accumulator;
-	}, {});
-
-	const input = appsEntries[buildEntry] ?? appsEntries.index;
 
 	return {
 		base: './',
-		define: {
-			__APP_ENV__: JSON.stringify(appEnv),
+		resolve: {
+			alias: {
+				'~': fileURLToPath(new URL('./src', import.meta.url)),
+			},
 		},
 		build: {
 			watch: mode === 'development' ? {} : null,
@@ -69,6 +47,10 @@ export default defineConfig(({mode}) => {
 			checker({
 				typescript: {
 					tsconfigPath,
+				},
+				biome: {
+					command: 'lint',
+					watchPath: 'src',
 				},
 			}),
 			transformHtmlPlugin(),

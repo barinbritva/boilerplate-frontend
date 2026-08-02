@@ -1,6 +1,7 @@
 {
 	"name": "frontend",
 	"version": "0.0.1",
+	"type": "module",
 	"engines": {
 		"node": ">=24.16.0",
 		"pnpm": ">=11.5.0"
@@ -11,32 +12,33 @@
 		"pnpm": "11.5.2"
 	},
 	"scripts": {
-		"dev": "env-cmd -f .env vite serve --mode development",
-		"build:dev": "env-cmd -f .env vite build --mode development",
-		"build": "env-cmd -f .env vite build --mode production",
+		"prepare": "lefthook install",
+		"setup-app-env": "node --env-file-if-exists=.env setup-app-env.mts",
+		"dev": "pnpm setup-app-env && vite serve --mode development",
+		"build:dev": "pnpm setup-app-env && vite build --mode development",
+		"build": "vite build --mode production",
 		"check-types": "tsc --noEmit",
-		"lint": "prettier --check \"**/*.{js,jsx,ts,tsx,json,yml,yaml}\"",
-		"lint:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,yml,yaml}\""
+		"check-imports": "biome lint src",
+		"lint": "prettier --check \"**/*.{js,jsx,mjs,mts,ts,tsx,json,yml,yaml}\"",
+		"lint:fix": "prettier --write \"**/*.{js,jsx,mjs,mts,ts,tsx,json,yml,yaml}\""
 	},
 	"dependencies": {
 		"history": "5.3.0",
-		"mobx": "6.12.3",
-		"mobx-react-lite": "4.0.7",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
+		"mobx": "7.0.0",
+		"mobx-react-lite": "5.0.0",
+		"react": "19.2.8",
+		"react-dom": "19.2.8",
 		"universal-router": "10.0.3",
-		"vite": "8.0.14",
-		"vite-plugin-checker": "0.14.1"
+		"vite": "8.2.0",
+		"vite-plugin-checker": "0.14.5"
 	},
 	"devDependencies": {
-		"@types/react": "18.2.74",
-		"@types/react-dom": "18.2.23",
-		"concurrently": "9.2.4",
-		"cross-env": "7.0.3",
-		"env-cmd": "10.1.0",
+		"@biomejs/biome": "2.5.5",
+		"@types/node": "26.1.1",
+		"@types/react": "19.2.18",
+		"@types/react-dom": "19.2.4",
 		"lefthook": "2.1.9",
-		"prettier": "3.3.3",
-		"ts-loader": "9.5.1",
+		"prettier": "3.9.6",
 		"typescript": "5.6.3"
 	}
 }

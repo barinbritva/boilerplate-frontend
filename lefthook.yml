@@ -1,9 +1,12 @@
 pre-commit:
-  parallel: true
+  parallel: false
   commands:
     lint:
-      glob: '*.{js,jsx,ts,tsx,json,yml,yaml}'
+      glob: '*.{js,jsx,ts,tsx,mjs,mts,json,yml,yaml}'
       run: pnpm prettier --write {staged_files} && git add {staged_files}
+    lint-imports:
+      glob: 'src/**/*.{js,jsx,ts,tsx,mjs,mts}'
+      run: pnpm biome lint {staged_files}
 pre-push:
   parallel: true
   commands:
