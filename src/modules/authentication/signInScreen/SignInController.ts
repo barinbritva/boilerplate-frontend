@@ -1,6 +1,6 @@
 import {Page} from '~/core/presentation/Page';
-import {Controller} from '~/core/routing/Controller';
-import {ControllerResult} from '~/core/routing/ControllerResult';
+import {type Controller} from '~/core/routing/Controller';
+import {type ControllerResult} from '~/core/routing/ControllerResult';
 import {Authenticator} from '~/modules/authentication/session/Authenticator';
 import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
 import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';

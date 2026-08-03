@@ -1,3 +1,7 @@
 export class Redirect {
-	constructor(public readonly redirectTo: string) {}
+	public readonly redirectTo: string;
+
+	constructor(redirectTo: string) {
+		this.redirectTo = redirectTo;
+	}
 }

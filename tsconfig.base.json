@@ -1,22 +1,27 @@
 {
 	"compilerOptions": {
-		// General
+		// Main build settings
+		"target": "esnext",
+		"module": "preserve",
+		"moduleResolution": "bundler",
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"outDir": "./dist",
+		"jsx": "react-jsx",
+		"useDefineForClassFields": true,
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
-		"downlevelIteration": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"module": "ESNext",
-		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		// Modern TypeScript way
+		"erasableSyntaxOnly": true,
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
+
 		"paths": {
 			"~/*": ["./src/*"]
 		},
-		"target": "ES2016",
-		"outDir": "./dist",
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-
-		"jsx": "react",
 
 		// Checks
 		"allowUnreachableCode": false,

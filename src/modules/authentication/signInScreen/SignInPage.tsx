@@ -1,5 +1,5 @@
-import React, {ComponentType} from 'react';
-import {PublicPageProps, PublicTemplate} from '~/ui/templates/PublicTemplate';
+import {type ComponentType} from 'react';
+import {type PublicPageProps, PublicTemplate} from '~/ui/templates/PublicTemplate';
 import {Heading} from '~/ui/atoms/Heading';
 import {Button} from '~/ui/atoms/Button';
 

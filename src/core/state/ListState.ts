@@ -1,4 +1,4 @@
-import {observable, IObservableArray} from 'mobx';
+import {observable, type IObservableArray} from 'mobx';
 
 export class ListModel<T> {
 	public readonly observableItems: IObservableArray<T>;

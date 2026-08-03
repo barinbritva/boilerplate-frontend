@@ -1,3 +1,7 @@
 export class AccountModel {
-	constructor(public readonly id: string) {}
+	public readonly id: string;
+
+	constructor(id: string) {
+		this.id = id;
+	}
 }

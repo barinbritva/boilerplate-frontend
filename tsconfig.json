@@ -1,7 +1,4 @@
 {
-	"extends": "./tsconfig.base.json",
-	"compilerOptions": {
-		"outDir": "./dist",
-		"declaration": false
-	}
+	"extends": "./tsconfig.base.json"
+	// Place to override options if needed
 }

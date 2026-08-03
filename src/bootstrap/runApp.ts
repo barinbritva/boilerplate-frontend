@@ -1,11 +1,11 @@
 import {createRouter} from './router/createRouter';
-import {Page, UnsubscribePage} from '~/core/presentation/Page';
+import {Page, type UnsubscribePage} from '~/core/presentation/Page';
 import {Redirect} from '~/core/routing/Redirect';
 import {NotFoundError} from '~/core/http/errors/NotFoundError';
 import {ReactRenderer} from '~/core/presentation/ReactRenderer';
 import {PageMetaManager} from '~/core/presentation/PageMetaManager';
 import {createServiceContainer} from './serviceContainer/createServiceContainer';
-import {ControllerResult} from '~/core/routing/ControllerResult';
+import {type ControllerResult} from '~/core/routing/ControllerResult';
 import {UnauthorizedError} from '~/core/http/errors/UnauthorizedError';
 import {ErrorPage} from '~/modules/errorHandling/unexpectedErrorScreen/ErrorPage';
 import {createConfiguration} from './configuration/createConfiguration';

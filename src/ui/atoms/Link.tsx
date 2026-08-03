@@ -1,5 +1,5 @@
-import React, {ComponentType, type MouseEvent} from 'react';
-import {A, AProps} from '~/ui/atoms/A';
+import {type ComponentType, type MouseEvent} from 'react';
+import {A, type AProps} from '~/ui/atoms/A';
 import {useNavigate} from '~/ui/contexts/NavigationContext';
 
 function isExternalLink(link: string): boolean {

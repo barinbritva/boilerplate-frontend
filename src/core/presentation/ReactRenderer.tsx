@@ -1,5 +1,5 @@
-import React, {ComponentType, PropsWithChildren} from 'react';
-import {createRoot, Root} from 'react-dom/client';
+import {type ComponentType, type PropsWithChildren} from 'react';
+import {createRoot, type Root} from 'react-dom/client';
 import {View} from './View';
 
 export class ReactRenderer {

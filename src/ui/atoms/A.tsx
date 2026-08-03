@@ -1,4 +1,4 @@
-import React, {AnchorHTMLAttributes, ComponentType} from 'react';
+import {type AnchorHTMLAttributes, type ComponentType} from 'react';
 
 export interface AProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	href: string;
