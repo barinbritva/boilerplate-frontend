@@ -1,17 +1,17 @@
-import {createRouter} from './router/createRouter';
-import {Page, type UnsubscribePage} from '~/core/presentation/Page';
-import {Redirect} from '~/core/routing/Redirect';
-import {NotFoundError} from '~/core/http/errors/NotFoundError';
-import {ReactRenderer} from '~/core/presentation/ReactRenderer';
-import {PageMetaManager} from '~/core/presentation/PageMetaManager';
-import {createServiceContainer} from './serviceContainer/createServiceContainer';
-import {type ControllerResult} from '~/core/routing/ControllerResult';
-import {UnauthorizedError} from '~/core/http/errors/UnauthorizedError';
-import {ErrorPage} from '~/modules/errorHandling/unexpectedErrorScreen/ErrorPage';
-import {createConfiguration} from './configuration/createConfiguration';
-import {AlreadyAuthorizedError} from '~/modules/authentication/session/errors/AlreadyAuthorizedError';
-import {View} from '~/core/presentation/View';
-import {createReactContexts} from './react/createReactContexts';
+import {createRouter} from './router/createRouter.js';
+import {Page, type UnsubscribePage} from '#/core/presentation/Page.js';
+import {Redirect} from '#/core/routing/Redirect.js';
+import {NotFoundError} from '#/core/http/errors/NotFoundError.js';
+import {ReactRenderer} from '#/core/presentation/ReactRenderer.js';
+import {PageMetaManager} from '#/core/presentation/PageMetaManager.js';
+import {createServiceContainer} from './serviceContainer/createServiceContainer.js';
+import {type ControllerResult} from '#/core/routing/ControllerResult.js';
+import {UnauthorizedError} from '#/core/http/errors/UnauthorizedError.js';
+import {ErrorPage} from '#/modules/errorHandling/unexpectedErrorScreen/ErrorPage.js';
+import {createConfiguration} from './configuration/createConfiguration.js';
+import {AlreadyAuthorizedError} from '#/modules/authentication/session/errors/AlreadyAuthorizedError.js';
+import {View} from '#/core/presentation/View.js';
+import {createReactContexts} from './react/createReactContexts.js';
 
 export async function runApp(): Promise<void> {
 	const appContainer = document.createElement('div');

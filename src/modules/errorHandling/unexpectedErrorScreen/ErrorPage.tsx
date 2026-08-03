@@ -1,6 +1,6 @@
 import {type ComponentType} from 'react';
-import {Heading} from '~/ui/atoms/Heading';
-import {type PublicPageProps, PublicTemplate} from '~/ui/templates/PublicTemplate';
+import {Heading} from '#/ui/atoms/Heading.js';
+import {type PublicPageProps, PublicTemplate} from '#/ui/templates/PublicTemplate.js';
 
 export interface ErrorPageProps extends PublicPageProps {
 	message: string;

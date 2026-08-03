@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import path from 'node:path';
-// @ts-expect-error Native Node TypeScript requires an explicit file extension.
 import {validateAppEnvironment} from './src/bootstrap/configuration/validateAppEnvironment.mts';
 
 function setupEnv() {

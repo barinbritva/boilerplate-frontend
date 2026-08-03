@@ -1,4 +1,15 @@
 {
-	"extends": "./tsconfig.base.json"
-	// Place to override options if needed
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"lib": ["ESNext"],
+		"types": ["node"],
+		"noEmit": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true
+	},
+	// this config is only for tooling files places in the root
+	"include": ["*.ts", "*.tsx", "*.mts", "*.cts"]
 }

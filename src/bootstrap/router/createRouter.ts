@@ -1,9 +1,9 @@
 import UniversalRouter from 'universal-router';
-import {type ServiceContainer} from '~/bootstrap/serviceContainer/createServiceContainer';
-import {type ControllerResult} from '~/core/routing/ControllerResult';
-import {Route} from './RouteBuilder';
-import {SignInController} from '~/modules/authentication/signInScreen/SignInController';
-import {HomeController} from '~/modules/home/homeScreen/HomeController';
+import {type ServiceContainer} from '#/bootstrap/serviceContainer/createServiceContainer.js';
+import {type ControllerResult} from '#/core/routing/ControllerResult.js';
+import {Route} from './RouteBuilder.js';
+import {SignInController} from '#/modules/authentication/signInScreen/SignInController.js';
+import {HomeController} from '#/modules/home/homeScreen/HomeController.js';
 
 export function createRouter(serviceContainer: ServiceContainer) {
 	return new UniversalRouter<ControllerResult>([

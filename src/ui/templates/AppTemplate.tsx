@@ -1,5 +1,5 @@
 import React, {type ComponentType} from 'react';
-import {Link} from '~/ui/atoms/Link';
+import {Link} from '#/ui/atoms/Link.js';
 
 export interface AppTemplateProps {
 	account: {

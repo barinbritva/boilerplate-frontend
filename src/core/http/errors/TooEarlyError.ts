@@ -1,5 +1,5 @@
-import {HttpStatus} from '~/core/http/HttpStatus';
-import {HttpError} from './HttpError';
+import {HttpStatus} from '#/core/http/HttpStatus.js';
+import {HttpError} from './HttpError.js';
 
 export class TooEarlyError extends HttpError {
 	constructor(message: string = 'Too Early') {

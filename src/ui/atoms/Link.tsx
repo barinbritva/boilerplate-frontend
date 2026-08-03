@@ -1,6 +1,6 @@
 import {type ComponentType, type MouseEvent} from 'react';
-import {A, type AProps} from '~/ui/atoms/A';
-import {useNavigate} from '~/ui/contexts/NavigationContext';
+import {A, type AProps} from '#/ui/atoms/A.js';
+import {useNavigate} from '#/ui/contexts/NavigationContext.js';
 
 function isExternalLink(link: string): boolean {
 	return link.includes('://');

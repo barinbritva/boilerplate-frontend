@@ -1,6 +1,5 @@
 import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
-import {fileURLToPath, URL} from 'node:url';
 import {resolveViteEnv} from './build.env.js';
 
 function transformHtmlPlugin() {
@@ -17,15 +16,10 @@ export default defineConfig(({mode}) => {
 	const buildEntry = 'index';
 	const input = './index.html';
 	const isDev = mode === 'development';
-	const tsconfigPath = isDev ? './tsconfig.dev.json' : './tsconfig.json';
+	const tsconfigPath = isDev ? './src/tsconfig.dev.json' : './src/tsconfig.json';
 
 	return {
 		base: './',
-		resolve: {
-			alias: {
-				'~': fileURLToPath(new URL('./src', import.meta.url)),
-			},
-		},
 		build: {
 			watch: mode === 'development' ? {} : null,
 			outDir: './dist',

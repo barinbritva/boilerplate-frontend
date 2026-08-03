@@ -16,7 +16,7 @@
 						"patterns": [
 							{
 								"group": ["..", "../**"],
-								"message": "Use the ~/ source alias instead of importing from a parent directory."
+								"message": "Use the #/ source alias instead of importing from a parent directory."
 							}
 						]
 					}
@@ -36,10 +36,10 @@
 								"patterns": [
 									{
 										"group": ["..", "../**"],
-										"message": "Use the ~/ source alias instead of importing from a parent directory."
+										"message": "Use the #/ source alias instead of importing from a parent directory."
 									},
 									{
-										"group": ["~/bootstrap/**", "~/modules/**", "~/ui/**"],
+										"group": ["#/bootstrap/**", "#/modules/**", "#/ui/**"],
 										"message": "Core must remain independent."
 									}
 								]
@@ -60,10 +60,10 @@
 								"patterns": [
 									{
 										"group": ["..", "../**"],
-										"message": "Use the ~/ source alias instead of importing from a parent directory."
+										"message": "Use the #/ source alias instead of importing from a parent directory."
 									},
 									{
-										"group": ["~/bootstrap/**", "!~/bootstrap/router/RouteBuilder"],
+										"group": ["#/bootstrap/**", "!#/bootstrap/router/RouteBuilder.js"],
 										"message": "Modules must not depend on bootstrap. RouteBuilder is a temporary known exception."
 									}
 								]
@@ -84,10 +84,10 @@
 								"patterns": [
 									{
 										"group": ["..", "../**"],
-										"message": "Use the ~/ source alias instead of importing from a parent directory."
+										"message": "Use the #/ source alias instead of importing from a parent directory."
 									},
 									{
-										"group": ["~/bootstrap/**", "~/modules/**", "~/core/**"],
+										"group": ["#/bootstrap/**", "#/modules/**", "#/core/**"],
 										"message": "Global UI must remain presentation-only."
 									}
 								]

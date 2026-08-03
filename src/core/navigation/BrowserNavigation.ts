@@ -1,5 +1,5 @@
 import {type BrowserHistory, createBrowserHistory, type Location} from 'history';
-import {type Middleware, Pipeline} from './Pipeline';
+import {type Middleware, Pipeline} from './Pipeline.js';
 
 export type {Location};
 
