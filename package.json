@@ -11,7 +11,7 @@
 	},
 	"engineStrict": true,
 	"volta": {
-		"node": "24.16.0",
+		"node": "24.20.0",
 		"pnpm": "11.5.2"
 	},
 	"scripts": {
@@ -20,7 +20,9 @@
 		"dev": "pnpm setup-app-env && vite serve --mode development",
 		"build:dev": "pnpm setup-app-env && vite build --mode development",
 		"build": "vite build --mode production",
-		"check-types": "tsc -p tsconfig.json --noEmit && tsc -p src/tsconfig.json --noEmit",
+		"check-types:app": "tsc -p src/tsconfig.json --noEmit",
+		"check-types:tooling": "tsc -p tsconfig.json --noEmit",
+		"check-types": "pnpm check-types:app && pnpm check-types:tooling",
 		"check-imports": "biome lint src",
 		"lint": "prettier --check \"**/*.{js,jsx,mjs,mts,ts,tsx,json,yml,yaml}\"",
 		"lint:fix": "prettier --write \"**/*.{js,jsx,mjs,mts,ts,tsx,json,yml,yaml}\""
@@ -31,9 +33,7 @@
 		"mobx-react-lite": "5.0.0",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
-		"universal-router": "10.0.3",
-		"vite": "8.2.0",
-		"vite-plugin-checker": "0.14.5"
+		"universal-router": "10.0.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.5",
@@ -42,6 +42,8 @@
 		"@types/react-dom": "19.2.4",
 		"lefthook": "2.1.9",
 		"prettier": "3.9.6",
-		"typescript": "7.0.2"
+		"typescript": "7.0.2",
+		"vite": "8.2.0",
+		"vite-plugin-checker": "0.14.5"
 	}
 }
