@@ -1,9 +1,10 @@
-import {type AnchorHTMLAttributes, type ComponentType} from 'react';
+import {Anchor, type AnchorProps, type ElementProps} from '@mantine/core';
+import {type ComponentType} from 'react';
 
-export interface AProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface AProps extends AnchorProps, ElementProps<'a', keyof AnchorProps> {
 	href: string;
 }
 
 export const A: ComponentType<AProps> = (props) => {
-	return <a {...props} />;
+	return <Anchor {...props} />;
 };
