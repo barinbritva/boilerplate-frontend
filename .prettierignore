@@ -2,3 +2,4 @@
 # no need to duplicate entries from .gitignore
 # https://prettier.io/docs/ignore/#ignoring-files-prettierignore
 pnpm-lock.yaml
+storybook/storybook-static
