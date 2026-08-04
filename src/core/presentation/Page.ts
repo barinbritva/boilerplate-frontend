@@ -1,6 +1,6 @@
-import {View} from './View';
-import {ArrayUtils} from '~/core/utils/ArrayUtils';
-import {PageMeta} from './PageMeta';
+import {View} from './View.js';
+import {ArrayUtils} from '#/core/utils/ArrayUtils.js';
+import {PageMeta} from './PageMeta.js';
 
 export interface UnsubscribePage {
 	(): void;

@@ -1,6 +1,6 @@
-import {AccountModel} from './AccountModel';
-import {UnauthorizedError} from '~/core/http/errors/UnauthorizedError';
-import {AlreadyAuthorizedError} from './errors/AlreadyAuthorizedError';
+import {AccountModel} from './AccountModel.js';
+import {UnauthorizedError} from '#/core/http/errors/UnauthorizedError.js';
+import {AlreadyAuthorizedError} from './errors/AlreadyAuthorizedError.js';
 
 /**
  * This logic needs to be implemented in real applications

@@ -1,5 +1,5 @@
-import {ComponentType} from 'react';
-import {ArrayUtils} from '~/core/utils/ArrayUtils';
+import {type ComponentType} from 'react';
+import {ArrayUtils} from '#/core/utils/ArrayUtils.js';
 
 export interface UnsubscribeView {
 	(): void;
@@ -11,12 +11,14 @@ export interface ViewSubscriber<Data> {
 
 // todo #backlog 🟡 forbid non {}
 export class View<Data = {}> {
+	private _template: ComponentType<Data>;
+	private _data: Data;
 	private readonly viewSubscribers: ViewSubscriber<Data>[] = [];
 
-	public constructor(
-		private _template: ComponentType<Data>,
-		private _data: Data,
-	) {}
+	public constructor(template: ComponentType<Data>, data: Data) {
+		this._template = template;
+		this._data = data;
+	}
 
 	public get template(): ComponentType<Data> {
 		return this._template;

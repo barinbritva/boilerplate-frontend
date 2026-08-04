@@ -1,9 +1,9 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		// Development specific
+		// Disable removeComments to speed up the build time
 		"removeComments": false,
-		// Checks
+		// Disable some checks to not fail on not finished code
 		"noUnusedLocals": false,
 		"allowUnreachableCode": true
 	}

@@ -1,4 +1,4 @@
-import {createHttpError} from './createHttpError';
+import {createHttpError} from './createHttpError.js';
 
 export class HttpTransport {
 	public async makeRequest(url: string, options?: RequestInit): Promise<Response> {

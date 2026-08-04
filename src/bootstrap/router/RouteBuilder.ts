@@ -1,7 +1,9 @@
-export enum Route {
-	SignIn = '/sign-in',
-	Root = '/',
-}
+export const Route = {
+	SignIn: '/sign-in',
+	Root: '/',
+} as const;
+
+export type Route = (typeof Route)[keyof typeof Route];
 
 // todo make RouteBuilder agnostic. otherwise it's a service for only specific app
 export class RouteBuilder {

@@ -1,6 +1,6 @@
-import React, {ComponentType, PropsWithChildren} from 'react';
-import {NavigationProvider} from '~/ui/contexts/NavigationContext';
-import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
+import React, {type ComponentType, type PropsWithChildren} from 'react';
+import {NavigationProvider} from '#/ui/contexts/NavigationContext.js';
+import {BrowserNavigation} from '#/core/navigation/BrowserNavigation.js';
 
 interface CreateReactContextsParams {
 	navigation: BrowserNavigation;

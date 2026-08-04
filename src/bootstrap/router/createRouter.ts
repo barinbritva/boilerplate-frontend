@@ -1,9 +1,7 @@
 import UniversalRouter from 'universal-router';
-import {ServiceContainer} from '~/bootstrap/serviceContainer/createServiceContainer';
-import {ControllerResult} from '~/core/routing/ControllerResult';
-import {Route} from './RouteBuilder';
-import {SignInController} from '~/modules/authentication/signInScreen/SignInController';
-import {HomeController} from '~/modules/home/homeScreen/HomeController';
+import {type ServiceContainer} from '#/bootstrap/serviceContainer/createServiceContainer.js';
+import {type ControllerResult} from '#/core/routing/ControllerResult.js';
+import {Route} from './RouteBuilder.js';
 
 export function createRouter(serviceContainer: ServiceContainer) {
 	return new UniversalRouter<ControllerResult>([
@@ -13,6 +11,8 @@ export function createRouter(serviceContainer: ServiceContainer) {
 				const {authenticator, routeBuilder, pageMetaBuilder, navigation} = serviceContainer;
 				authenticator.assertNoAccount();
 
+				const {SignInController} = await import('#/modules/authentication/signInScreen/SignInController.js');
+
 				return new SignInController(authenticator, routeBuilder, pageMetaBuilder, navigation).handle();
 			},
 		},
@@ -21,6 +21,8 @@ export function createRouter(serviceContainer: ServiceContainer) {
 			action: async () => {
 				const {authenticator, routeBuilder, pageMetaBuilder, navigation} = serviceContainer;
 				const account = authenticator.getAccountOrThrow();
+
+				const {HomeController} = await import('#/modules/home/homeScreen/HomeController.js');
 
 				return new HomeController(authenticator, routeBuilder, pageMetaBuilder, account, navigation).handle();
 			},

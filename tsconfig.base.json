@@ -1,22 +1,15 @@
 {
 	"compilerOptions": {
-		// General
+		"useDefineForClassFields": true,
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
-		"downlevelIteration": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"paths": {
-			"~/*": ["./src/*"]
-		},
-		"target": "ES2016",
-		"outDir": "./dist",
 		"resolveJsonModule": true,
-		"skipLibCheck": true,
-
-		"jsx": "react",
+		// Modern TypeScript way
+		"erasableSyntaxOnly": true,
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
 
 		// Checks
 		"allowUnreachableCode": false,
@@ -33,7 +26,9 @@
 		"strictBindCallApply": true,
 		"strictFunctionTypes": true,
 		"strictNullChecks": true,
+		"strictBuiltinIteratorReturn": true,
 		"strictPropertyInitialization": true,
+		"useUnknownInCatchVariables": true,
 
 		"sourceMap": true,
 		"removeComments": true

@@ -1,6 +1,5 @@
 import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
-import {fileURLToPath, URL} from 'node:url';
 import {resolveViteEnv} from './build.env.js';
 
 function transformHtmlPlugin() {
@@ -14,18 +13,11 @@ function transformHtmlPlugin() {
 
 export default defineConfig(({mode}) => {
 	const env = resolveViteEnv(mode);
-	const buildEntry = 'index';
-	const input = './index.html';
 	const isDev = mode === 'development';
-	const tsconfigPath = isDev ? './tsconfig.dev.json' : './tsconfig.json';
+	const tsconfigPath = isDev ? './src/tsconfig.dev.json' : './src/tsconfig.json';
 
 	return {
 		base: './',
-		resolve: {
-			alias: {
-				'~': fileURLToPath(new URL('./src', import.meta.url)),
-			},
-		},
 		build: {
 			watch: mode === 'development' ? {} : null,
 			outDir: './dist',
@@ -33,13 +25,11 @@ export default defineConfig(({mode}) => {
 			assetsDir: 'scripts',
 			cssCodeSplit: false,
 			rollupOptions: {
-				input,
+				input: './index.html',
 				output: {
-					// todo allow code splitting when esmodules are implemented
-					codeSplitting: false,
-					entryFileNames: `scripts/${buildEntry}.js`,
-					chunkFileNames: 'scripts/[name].js',
-					assetFileNames: 'scripts/[name].[ext]',
+					entryFileNames: 'scripts/[name]-[hash].js',
+					chunkFileNames: 'scripts/[name]-[hash].js',
+					assetFileNames: 'scripts/[name]-[hash].[ext]',
 				},
 			},
 		},

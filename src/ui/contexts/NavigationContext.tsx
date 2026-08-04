@@ -1,4 +1,4 @@
-import React, {createContext, PropsWithChildren, useContext} from 'react';
+import {createContext, type PropsWithChildren, useContext} from 'react';
 
 export type Navigate = (href: string) => Promise<void>;
 

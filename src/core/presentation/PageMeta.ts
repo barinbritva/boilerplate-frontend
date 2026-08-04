@@ -1,6 +1,9 @@
 export class PageMeta {
-	constructor(
-		public readonly title: string,
-		public readonly favicon: string = '/favicon.ico',
-	) {}
+	public readonly title: string;
+	public readonly favicon: string = '/favicon.ico';
+
+	constructor(title: string, favicon: string = '/favicon.ico') {
+		this.title = title;
+		this.favicon = favicon;
+	}
 }

@@ -1,7 +1,15 @@
 {
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
-		"outDir": "./dist",
-		"declaration": false
-	}
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"lib": ["ESNext"],
+		"types": ["node"],
+		"noEmit": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true
+	},
+	// this config is only for tooling files places in the root
+	"include": ["*.ts", "*.tsx", "*.mts", "*.cts"]
 }

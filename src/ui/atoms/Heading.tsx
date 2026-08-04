@@ -1,4 +1,4 @@
-import React, {ComponentType, HTMLAttributes} from 'react';
+import {type ComponentType, type HTMLAttributes} from 'react';
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {}
 

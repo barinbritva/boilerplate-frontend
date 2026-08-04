@@ -1,4 +1,4 @@
-import {AppEnvironment} from '~/bootstrap/configuration/validateAppEnvironment.mjs';
+import {type AppEnvironment} from '#/bootstrap/configuration/validateAppEnvironment.mjs';
 
 export class Configuration {
 	public readonly apiUrl: string;

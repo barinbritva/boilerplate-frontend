@@ -1,4 +1,4 @@
-import React, {ComponentType} from 'react';
+import React, {type ComponentType} from 'react';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 

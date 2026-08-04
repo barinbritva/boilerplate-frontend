@@ -1,12 +1,12 @@
-import {Page} from '~/core/presentation/Page';
-import {Controller} from '~/core/routing/Controller';
-import {ControllerResult} from '~/core/routing/ControllerResult';
-import {Authenticator} from '~/modules/authentication/session/Authenticator';
-import {BrowserNavigation} from '~/core/navigation/BrowserNavigation';
-import {PageMetaBuilder} from '~/core/presentation/PageMetaBuilder';
-import {RouteBuilder} from '~/bootstrap/router/RouteBuilder';
-import {View} from '~/core/presentation/View';
-import {SignInPage} from './SignInPage';
+import {Page} from '#/core/presentation/Page.js';
+import {type Controller} from '#/core/routing/Controller.js';
+import {type ControllerResult} from '#/core/routing/ControllerResult.js';
+import {Authenticator} from '#/modules/authentication/session/Authenticator.js';
+import {BrowserNavigation} from '#/core/navigation/BrowserNavigation.js';
+import {PageMetaBuilder} from '#/core/presentation/PageMetaBuilder.js';
+import {RouteBuilder} from '#/bootstrap/router/RouteBuilder.js';
+import {View} from '#/core/presentation/View.js';
+import {SignInPage} from './SignInPage.js';
 
 export class SignInController implements Controller {
 	private readonly authenticator: Authenticator;

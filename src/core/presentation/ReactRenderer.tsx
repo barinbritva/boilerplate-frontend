@@ -1,6 +1,6 @@
-import React, {ComponentType, PropsWithChildren} from 'react';
-import {createRoot, Root} from 'react-dom/client';
-import {View} from './View';
+import {type ComponentType, type PropsWithChildren} from 'react';
+import {createRoot, type Root} from 'react-dom/client';
+import {View} from './View.js';
 
 export class ReactRenderer {
 	private readonly root: Root;
