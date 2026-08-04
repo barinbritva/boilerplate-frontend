@@ -1,6 +1,6 @@
 import {observable, type IObservableArray} from 'mobx';
 
-export class ListModel<T> {
+export class ListState<T> {
 	public readonly observableItems: IObservableArray<T>;
 
 	constructor() {
