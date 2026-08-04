@@ -9,7 +9,7 @@ export interface ErrorPageProps extends PublicPageProps {
 export const ErrorPage: ComponentType<ErrorPageProps> = ({templateProps, message}) => {
 	return (
 		<PublicTemplate {...templateProps}>
-			<Heading>An error occurred</Heading>
+			<Heading level={1}>An error occurred</Heading>
 			<div>
 				<pre>{message}</pre>
 			</div>

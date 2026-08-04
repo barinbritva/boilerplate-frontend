@@ -10,7 +10,7 @@ export interface HomePageProps extends AppPageProps {
 export const HomePage: ComponentType<HomePageProps> = ({templateProps, onSignOut}) => {
 	return (
 		<AppTemplate {...templateProps}>
-			<Heading>Home</Heading>
+			<Heading level={1}>Home</Heading>
 			<Button onClick={onSignOut}>Sign Out</Button>
 		</AppTemplate>
 	);
