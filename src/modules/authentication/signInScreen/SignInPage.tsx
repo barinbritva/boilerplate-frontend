@@ -10,7 +10,7 @@ export interface SignInPageProps extends PublicPageProps {
 export const SignInPage: ComponentType<SignInPageProps> = ({templateProps, onSignIn}) => {
 	return (
 		<PublicTemplate {...templateProps}>
-			<Heading level={1}>Welcome</Heading>
+			<Heading order={1}>Welcome</Heading>
 			<Button onClick={onSignIn}>Sign In</Button>
 		</PublicTemplate>
 	);

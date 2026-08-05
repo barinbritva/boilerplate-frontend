@@ -3,6 +3,8 @@
 <head>
 	<title>Boilerplate</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- Inject css file via Vite to not add `declare module '*.css';` on TypeScript level  -->
+	<link rel="stylesheet" href="/node_modules/@mantine/core/styles.css" />
 	<script vite-ignore src="./scripts/environment.js"></script>
 	<script type="module" src="./src/index.ts"></script>
 </head>

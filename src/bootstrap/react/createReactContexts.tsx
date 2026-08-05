@@ -1,4 +1,5 @@
 import React, {type ComponentType, type PropsWithChildren} from 'react';
+import {MantineProvider} from '@mantine/core';
 import {NavigationProvider} from '#/ui/contexts/NavigationContext.js';
 import {BrowserNavigation} from '#/core/navigation/BrowserNavigation.js';
 
@@ -14,7 +15,11 @@ export function createReactContexts({
 	const navigate = (href: string) => navigation.go(href);
 
 	return function ReactContexts({children}: PropsWithChildren) {
-		const NavigationBridge = <NavigationProvider navigate={navigate}>{children}</NavigationProvider>;
+		const NavigationBridge = (
+			<MantineProvider>
+				<NavigationProvider navigate={navigate}>{children}</NavigationProvider>
+			</MantineProvider>
+		);
 
 		if (strictModeEnabled) {
 			return <React.StrictMode>{NavigationBridge}</React.StrictMode>;

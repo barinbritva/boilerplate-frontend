@@ -8,6 +8,9 @@
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"types": [],
 		"jsx": "react-jsx",
-		"noEmit": true
+		"noEmit": true,
+
+		// Mantine doesn't compatible with exactOptionalPropertyTypes
+		"skipLibCheck": true
 	}
 }

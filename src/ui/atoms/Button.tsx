@@ -1,7 +1,8 @@
-import React, {type ComponentType} from 'react';
+import {Button as MantineButton, type ButtonProps as MantineButtonProps, type ElementProps} from '@mantine/core';
+import {type ComponentType} from 'react';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface ButtonProps extends MantineButtonProps, ElementProps<'button', keyof MantineButtonProps> {}
 
-export const Button: ComponentType<ButtonProps> = ({children, ...props}) => {
-	return <button {...props}>{children}</button>;
+export const Button: ComponentType<ButtonProps> = (props) => {
+	return <MantineButton {...props} />;
 };
