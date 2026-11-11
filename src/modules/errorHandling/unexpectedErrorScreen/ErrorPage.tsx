@@ -1,5 +1,5 @@
 import {type ComponentType} from 'react';
-import {Heading} from '#/ui/atoms/Heading.js';
+import {Heading} from '#/ui/components/Heading.js';
 import {type PublicPageProps, PublicTemplate} from '#/ui/templates/PublicTemplate.js';
 
 export interface ErrorPageProps extends PublicPageProps {

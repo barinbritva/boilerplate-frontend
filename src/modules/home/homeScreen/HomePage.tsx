@@ -1,6 +1,6 @@
 import {type ComponentType} from 'react';
-import {Heading} from '#/ui/atoms/Heading.js';
-import {Button} from '#/ui/atoms/Button.js';
+import {Heading} from '#/ui/components/Heading.js';
+import {Button} from '#/ui/components/Button.js';
 import {type AppPageProps, AppTemplate} from '#/ui/templates/AppTemplate.js';
 
 export interface HomePageProps extends AppPageProps {
