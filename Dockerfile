@@ -10,7 +10,7 @@ RUN pnpm fetch
 FROM dependencies AS frontend-build
 COPY package.json ./
 RUN pnpm --offline --frozen-lockfile -r install --ignore-scripts
-COPY .prettierignore .prettierrc.json index.html ./
+COPY .prettierignore .prettierrc.json biome.json index.html ./
 COPY tooling ./tooling
 COPY src ./src
 RUN pnpm lint

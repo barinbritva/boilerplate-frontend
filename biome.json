@@ -1,33 +1,66 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"files": {
-		"includes": ["src/**"]
-	},
+	"vcs": {"enabled": true, "clientKind": "git", "useIgnoreFile": true},
+	"files": {"ignoreUnknown": true},
 	"formatter": {
-		"enabled": false
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 120,
+		"attributePosition": "auto",
+		"bracketSameLine": false,
+		"bracketSpacing": false,
+		"expand": "auto",
+		"useEditorconfig": true
 	},
-	"assist": {
-		"enabled": false
-	},
+	"assist": {"enabled": false},
 	"linter": {
 		"rules": {
-			"preset": "none",
-			"style": {
-				"noRestrictedImports": {
-					"level": "error",
-					"options": {
-						"patterns": [
-							{
-								"group": ["..", "../**"],
-								"message": "Use the #/ source alias instead of importing from a parent directory."
-							}
-						]
-					}
-				}
-			}
+			"preset": "none"
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "all",
+			"semicolons": "always",
+			"arrowParentheses": "always",
+			"bracketSameLine": false,
+			"quoteStyle": "single",
+			"attributePosition": "auto",
+			"bracketSpacing": false
+		}
+	},
+	"html": {
+		"formatter": {
+			"indentScriptAndStyle": false,
+			"selfCloseVoidElements": "always"
 		}
 	},
 	"overrides": [
+		{
+			"includes": ["src/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noRestrictedImports": {
+							"level": "error",
+							"options": {
+								"patterns": [
+									{
+										"group": ["..", "../**"],
+										"message": "Use the #/ source alias instead of importing from a parent directory."
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		},
 		{
 			"includes": ["src/core/**"],
 			"linter": {

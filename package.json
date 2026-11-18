@@ -24,8 +24,10 @@
 		"check-types:tooling": "tsc -p tooling/tsconfig.json --noEmit",
 		"check-types": "pnpm check-types:app && pnpm check-types:tooling",
 		"check-imports": "biome lint src",
-		"lint": "prettier --check \"**/*.{js,jsx,mjs,mts,ts,tsx,json,yml,yaml}\"",
-		"lint:fix": "prettier --write \"**/*.{js,jsx,mjs,mts,ts,tsx,json,yml,yaml}\""
+		"check:lint-format": "biome check . && prettier --check \"**/*.{yml,yaml}\"",
+		"fix:lint-format": "biome check --write . && prettier --write \"**/*.{yml,yaml}\"",
+		"lint": "pnpm check:lint-format",
+		"lint:fix": "pnpm fix:lint-format"
 	},
 	"dependencies": {
 		"history": "5.3.0",
