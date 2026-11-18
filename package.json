@@ -6,12 +6,12 @@
 		"#/*": "./src/*"
 	},
 	"engines": {
-		"node": ">=24.16.0",
-		"pnpm": ">=11.5.0"
+		"node": ">=24.18.0",
+		"pnpm": ">=11.5.2"
 	},
 	"engineStrict": true,
 	"volta": {
-		"node": "24.20.0",
+		"node": "24.18.0",
 		"pnpm": "11.5.2"
 	},
 	"scripts": {
@@ -23,7 +23,6 @@
 		"check-types:app": "tsc -p src/tsconfig.json --noEmit",
 		"check-types:tooling": "tsc -p tooling/tsconfig.json --noEmit",
 		"check-types": "pnpm check-types:app && pnpm check-types:tooling",
-		"check-imports": "biome lint src",
 		"check:lint-format": "biome check . && prettier --check \"**/*.{yml,yaml}\"",
 		"fix:lint-format": "biome check --write . && prettier --write \"**/*.{yml,yaml}\"",
 		"lint": "pnpm check:lint-format",

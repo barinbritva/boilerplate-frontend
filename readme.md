@@ -18,6 +18,11 @@ The motivation is to separate a logic, data and view layers. React (other UI lib
 - UI components don't load data and don't do side effects
 - React hooks maybe used only for UI specific logic
 
+# Ideas
+
+- Project follows modern practices: ES modules, TypeScript with erasable syntax only.
+- Project manages project parts independently: src has his own configs, tooling their own configs, etc. Nothing should be in the root.
+
 # Run with Docker
 
 ```sh

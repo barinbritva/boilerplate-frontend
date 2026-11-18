@@ -15,7 +15,6 @@ COPY tooling ./tooling
 COPY src ./src
 RUN pnpm lint
 RUN pnpm check-types:app
-RUN pnpm check-imports
 RUN pnpm build
 
 # use whatever server you want, here we use serve for simplicity

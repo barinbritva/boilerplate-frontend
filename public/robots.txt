@@ -1,2 +1,4 @@
+# You can tune indexing here. How to use it: https://en.wikipedia.org/wiki/Robots.txt
+
 User-agent: *
-Disallow: /
+Allow: /
