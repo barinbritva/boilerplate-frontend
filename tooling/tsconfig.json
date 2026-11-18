@@ -6,12 +6,10 @@
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
-		// Modern TypeScript way
 		"erasableSyntaxOnly": true,
 		"verbatimModuleSyntax": true,
 		"isolatedModules": true,
 
-		// Checks
 		"allowUnreachableCode": false,
 		"exactOptionalPropertyTypes": true,
 		"noFallthroughCasesInSwitch": true,
@@ -31,6 +29,15 @@
 		"useUnknownInCatchVariables": true,
 
 		"sourceMap": true,
-		"removeComments": true
-	}
+		"removeComments": true,
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"lib": ["ESNext"],
+		"types": ["node"],
+		"noEmit": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true
+	},
+	"include": ["*.ts", "*.tsx", "*.mts", "*.cts"]
 }

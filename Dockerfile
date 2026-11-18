@@ -10,7 +10,8 @@ RUN pnpm fetch
 FROM dependencies AS frontend-build
 COPY package.json ./
 RUN pnpm --offline --frozen-lockfile -r install --ignore-scripts
-COPY .prettierignore .prettierrc.json index.html tsconfig.base.json tsconfig.json ./
+COPY .prettierignore .prettierrc.json index.html ./
+COPY tooling ./tooling
 COPY src ./src
 RUN pnpm lint
 RUN pnpm check-types:app
@@ -22,7 +23,7 @@ FROM node:24.18.0-alpine AS final
 RUN npm install -g serve && npm cache clean --force
 WORKDIR /app
 COPY --from=frontend-build /app/dist ./dist
-COPY setup-app-env.mts ./
+COPY tooling/setup-app-env.mts ./tooling/setup-app-env.mts
 COPY src/bootstrap/configuration/validateAppEnvironment.mts ./src/bootstrap/configuration/
 
-CMD ["sh", "-c", "node ./setup-app-env.mts ./dist/scripts && serve -s dist"]
+CMD ["sh", "-c", "node ./tooling/setup-app-env.mts ./dist/scripts && serve -s dist"]

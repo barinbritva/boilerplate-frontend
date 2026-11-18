@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import {validateAppEnvironment} from './src/bootstrap/configuration/validateAppEnvironment.mts';
+import {validateAppEnvironment} from '../src/bootstrap/configuration/validateAppEnvironment.mts';
 
 function setupEnv() {
 	const environmentVars = validateAppEnvironment(process.env);
