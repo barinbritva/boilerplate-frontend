@@ -1,0 +1,20 @@
+{
+	"name": "boilerplate-frontend",
+	"image": "mcr.microsoft.com/devcontainers/base:bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/node:2.1.0": {
+			"version": "24.16.0",
+			"pnpmVersion": "11.5.2"
+		}
+	},
+	"postCreateCommand": "cp -n .env.example .env && pnpm install",
+	"postStartCommand": "pnpm dev",
+	"forwardPorts": [5173],
+	"portsAttributes": {
+		"5173": {
+			"label": "Vite dev server",
+			"onAutoForward": "openPreview"
+		}
+	},
+	"remoteUser": "vscode"
+}
